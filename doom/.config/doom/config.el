@@ -10,7 +10,13 @@
 (after! anaconda-mode
   (set-company-backend! 'anaconda-mode '(company-anaconda company-yasnippet)))
 
-(add-hook! 'prog-mode-hook #'(rainbow-delimiters-mode rainbow-turn-on global-color-identifiers-mode rainbow-mode highlight-quoted-mode))
+(add-hook! 'prog-mode-hook #'(rainbow-delimiters-mode global-color-identifiers-mode rainbow-mode highlight-quoted-mode))
+
+(add-hook! company-mode
+  (setq
+   company-minimum-prefix-length 2
+   )
+  )
 
 
 (add-hook! python-mode

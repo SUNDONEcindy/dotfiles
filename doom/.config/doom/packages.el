@@ -10,3 +10,5 @@
 (package! color-identifiers-mode)
 (package! python-docstring)
 (package! sphinx-doc)
+(package! company-statistics)
+(package! company-quickhelp)
