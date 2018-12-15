@@ -14,8 +14,7 @@
 
 (add-hook! company-mode
   (setq
-   company-minimum-prefix-length 2
-   )
+   company-minimum-prefix-length 2)
   )
 
 
