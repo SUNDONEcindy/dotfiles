@@ -25,26 +25,18 @@ zstyle ':prezto:*:*' color 'yes'
 # The order matters.
 zstyle ':prezto:load' pmodule \
   'environment' \
-  'terminal' \
   'editor' \
   'ssh' \
-  'osx' \
-  'homebrew' \
-  'command-not-found' \
   'git' \
-  'rsync' \
-  'ruby' \
-  'python' \
   'history' \
-  'directory' \
   'spectrum' \
   'utility' \
   'completion' \
-  'fasd' \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
   'prompt'
+
 
 #
 # Autosuggestions
@@ -135,7 +127,7 @@ zstyle ':prezto:module:prompt' show-return-val 'yes'
 #
 
 # Auto switch the Ruby version on directory change.
-zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+# zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 
 #
 # Python
