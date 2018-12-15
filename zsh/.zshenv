@@ -22,22 +22,25 @@ fi
 
 ### NVM ###
 # Tell NVM where to store its nodes.
-export NVM_DIR="$HOME/.nvm"
+# export NVM_DIR="$HOME/.nvm"
 
 
 ### PostgreSQL ###
-export PGDATA="/usr/local/var/postgres"
+# export PGDATA="/usr/local/var/postgres"
 
 
 ### VirtualEnvWrapper ###
 # install virtualenvwrapper using `pip3 install virtualenvwrapper`
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-export PROJECT_HOME="$HOME/Code"
+# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+# export PROJECT_HOME="$HOME/Code"
 
 
 ### XDG Configs pull directly from dotfiles ###
-export XDG_CONFIG_HOME="$HOME/.dotfiles"
+export XDG_CONFIG_HOME="$HOME/dotfiles"
 
+
+# use pudb as breakpoint() in python3
+export PYTHONBREAKPOINT=pudb.set_trace
 
 ### Work CICD ###
 # If my day job's CICD tooling is present, add it to the $PATH:

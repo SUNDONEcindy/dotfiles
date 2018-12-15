@@ -11,6 +11,7 @@ pep8-naming
 pycodestyle
 pydocstyle
 pylint
+black
 
 ## Packaging ##
 # virtualenv is included with >= Python 3.4

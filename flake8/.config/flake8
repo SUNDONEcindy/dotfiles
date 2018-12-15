@@ -1,8 +1,11 @@
 [flake8]
-ignore =
-    # http://flake8.pycqa.org/en/latest/user/error-codes.html
-    # https://pycodestyle.readthedocs.io/en/latest/intro.html#error-codes
-    # E128: continuation line under-indented for visual indent
-    E128,
-    # E501: line too long (82 > 79 characters)
-    E501
+# W191: tabs instead of spaces
+# E302: expected 2 blank lines, found 0
+# E265: block comment should start with '# '
+# E241: multiple spaces after ':'
+# F403: from . import *
+# E401: multiple imports on one line
+# E502: line too long
+ignore = E501,W191,E302,E265,E241,F403,E401
+# 88 ala black
+max-line-length = 88

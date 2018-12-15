@@ -1,11 +1,13 @@
 # Jeff Widman's Brewfile
 # To make it so Homebrew can handle Brewfiles:
 #   `brew tap Homebrew/bundle`
-#   `brew bundle --file=~/.dotfiles/homebrew/.Brewfile`
+#   `brew bundle --file=~/dotfiles/homebrew/.Brewfile`
+#
+# After .Brewfile is symlinked to ~/.Brewfile we can just `brew bundle --global`
 
 
 # Add formulae that duplicate OS X software with updated versions:
-tap 'homebrew/dupes'
+# tap 'homebrew/dupes'
 
 # Generally life is simplest to not update OSX default SSH
 # Because making a non-Apple SSH work with the OSX Keychain can be a pain
@@ -35,22 +37,22 @@ brew 'ncdu' # ncurses-based directory/file size viewer
 brew 'tree'
 
 # Databases
-brew 'sqlite'
-brew 'postgresql'
-brew 'mariadb' # in place of MySQL
-brew 'redis'
+# brew 'sqlite'
+# brew 'postgresql'
+# brew 'mariadb' # in place of MySQL
+# brew 'redis'
 
 # Python
-brew 'python@2'
-brew 'python3'
+# brew 'python@2'
+# brew 'python3'
 
 # Ruby
 # Use [RVM](http://rvm.io/) instead of Homebrew.
 
 # Java
 # VisualVM is an alternative to Jconsole for JMX debugging
-brew cask install java  # required for visualvm
-brew cask install visualvm
+# brew cask install java  # required for visualvm
+# brew cask install visualvm
 
 # Node
 # Use [`nvm`](https://github.com/creationix/nvm) instead of Homebrew.
@@ -59,13 +61,13 @@ brew cask install visualvm
 
 # Neovim
 # I prefer over Vim for the simple reason they accepted one of my patches ;)
-tap 'neovim/homebrew-neovim'
-brew 'neovim/neovim/neovim', args: ['HEAD']
+# tap 'neovim/homebrew-neovim'
+# brew 'neovim/neovim/neovim', args: ['HEAD']
 
 # Quicklook plugins
 tap 'Caskroom/cask'
-brew 'Caskroom/cask/qlstephen'
-brew 'Caskroom/cask/betterzipql'
+# brew 'Caskroom/cask/qlstephen'
+# brew 'Caskroom/cask/betterzipql'
 
 # Command-not-found
 # this is used by prezto's command-not-found module:

@@ -2,8 +2,11 @@
 # git-config man page: https://www.kernel.org/pub/software/scm/git/docs/git-config.html
 
 [user]
-  name = Jeff Widman
-  email = jeff@jeffwidman.com
+  name = John Farina
+  email = johnfarina@gmail.com
+
+[status]
+  showUntrackedFiles = all
 
 [color]
 # ui = true is a superset of all the more specific color options
@@ -41,8 +44,8 @@
 [push]
   default = simple
 
-[hub]
-  protocol = ssh # Github uses https by default
+# [hub]
+#   protocol = ssh # Github uses https by default
 
 [gist]
   private = yes
@@ -57,10 +60,10 @@
 [url "https://bitbucket.org/"]
     insteadOf = bb:
 
-[alias]
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+# [alias]
+# [difftool "sourcetree"]
+# 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+# 	path =
+# [mergetool "sourcetree"]
+# 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+# 	trustExitCode = true

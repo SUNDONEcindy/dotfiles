@@ -9,6 +9,8 @@ if [[ "$OSTYPE" = darwin* ]] ; then
   # This resolves install issues with mysql, postgres, and
   # other python packages with native non universal binary extensions
   export ARCHFLAGS="-arch x86_64"
+  # Ensure Homebrew binaries take precedence
+  export PATH=/usr/local/bin:/usr/local/sbin:"$PATH"
 fi
 
 #
@@ -23,8 +25,8 @@ fi
 # Editors
 #
 
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR='emacsclient -nw'
+export VISUAL='emacsclient -c'
 export PAGER='less'
 
 #
@@ -49,6 +51,9 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  # ensure MHPCC ssh and kerberos take precedent
+  /usr/local/krb5/bin
+  /usr/local/ossh/bin
   /usr/local/{bin,sbin}
   $path
 )
