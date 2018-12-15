@@ -6,5 +6,7 @@
 ;; (package! another-package :recipe (:fetcher github :repo "username/repo"))
 ;; (package! builtin-package :disable t)
 (package! rainbow-identifiers)
+(package! rainbow-mode)
+(package! color-identifiers-mode)
 (package! python-docstring)
 (package! sphinx-doc)
