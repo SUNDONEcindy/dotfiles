@@ -4,6 +4,7 @@
 (setq doom-font (font-spec :family "Menlo" :size 14)
       doom-big-font (font-spec :family "Menlo" :size 24)
       global-visual-line-mode t
+      which-key-idle-delay 0.001
       )
 
 (after! anaconda-mode
