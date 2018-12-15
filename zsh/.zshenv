@@ -36,7 +36,10 @@ fi
 
 
 ### XDG Configs pull directly from dotfiles ###
-export XDG_CONFIG_HOME="$HOME/dotfiles"
+# this makes all newly installed apps populate dotfiles instead of ~/.config,
+# which is maybe what I don't want
+#
+# export XDG_CONFIG_HOME="$HOME/dotfiles"
 
 
 # use pudb as breakpoint() in python3
