@@ -5,6 +5,7 @@
       doom-big-font (font-spec :family "Menlo" :size 24)
       global-visual-line-mode t
       which-key-idle-delay 0.001
+      +workspaces-on-switch-project-behavior t
       )
 
 (after! anaconda-mode
@@ -19,5 +20,21 @@
 
 
 (add-hook! python-mode
-  (setq sphinx-doc-mode t
-        python-docstring-mode t))
+  (setq
+   python-shell-interpreter "ipython"
+   python-shell-interpreter-args "--simple-prompt"
+   sphinx-doc-mode t
+   python-docstring-mode t))
+
+
+(after! ein
+  (setq
+   ;; ein:console-executable ("/usr/local/bin/ipython")
+   ein:console-security-dir (expand-file-name "~/Library/Jupyter/runtime")
+   ein:console-args
+   '((8888 . '("--simple-prompt"))
+     (8889 . '("--ssh" "--simple-prompt" "wai"))
+     ;; (default . '("--profile" "default"))
+     )
+   )
+  )
