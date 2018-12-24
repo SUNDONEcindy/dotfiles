@@ -12,3 +12,4 @@
 (package! sphinx-doc)
 (package! company-statistics)
 (package! company-quickhelp)
+(package! forge)
