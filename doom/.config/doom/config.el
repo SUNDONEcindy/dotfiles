@@ -13,8 +13,9 @@
 
 (add-hook! 'prog-mode-hook #'(rainbow-delimiters-mode global-color-identifiers-mode rainbow-mode highlight-quoted-mode))
 
-(add-hook! company-mode
+(add-hook! prog-mode
   (setq
+   company-backends '(company-files company-capf company-dabbrev company-ispell)
    company-minimum-prefix-length 2)
   )
 

@@ -25,6 +25,8 @@ zstyle ':prezto:*:*' color 'yes'
 # The order matters.
 zstyle ':prezto:load' pmodule \
   'environment' \
+  'directory' \
+  'terminal' \
   'editor' \
   'ssh' \
   'git' \
@@ -32,6 +34,7 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'fasd' \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
