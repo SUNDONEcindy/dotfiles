@@ -9,6 +9,8 @@ fi
 
 # Customize to your needs...
 
+umask 022
+
 ### Pip (Python) ###
 # pip should only run if there is a virtualenv currently activated
 # prevents accidentally installing packages without a virtualenv
