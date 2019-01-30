@@ -45,8 +45,7 @@ fi
 # use pudb as breakpoint() in python3
 export PYTHONBREAKPOINT=pudb.set_trace
 
-### Work CICD ###
-# If my day job's CICD tooling is present, add it to the $PATH:
-if [[ -s "$HOME/Code/cicd/bin/ci" ]]; then
-  export PATH="$PATH:$HOME/Code/cicd/bin"
+# prefer ananconda3, if it's installed
+if [[ -s "$HOME/anaconda3/bin" ]]; then
+  export PATH="$HOME/anaconda3bin:$PATH"
 fi
