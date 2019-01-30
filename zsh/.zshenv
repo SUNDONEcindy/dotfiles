@@ -45,7 +45,3 @@ fi
 # use pudb as breakpoint() in python3
 export PYTHONBREAKPOINT=pudb.set_trace
 
-# prefer ananconda3, if it's installed
-if [[ -s "$HOME/anaconda3/bin" ]]; then
-  export PATH="$HOME/anaconda3bin:$PATH"
-fi
