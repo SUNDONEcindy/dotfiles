@@ -46,6 +46,7 @@ This function should only modify configuration layer settings."
      spacemacs-layouts
      julia
      yaml
+     debug
      imenu-list
      pandoc
      vinegar
@@ -77,7 +78,7 @@ This function should only modify configuration layer settings."
              python-backend 'anaconda
              python-sort-imports-on-save nil
              python-test-runner '(pytest nose))
-     ;; parinfer
+     parinfer
      theming
      themes-megapack
      ipython-notebook
@@ -503,6 +504,11 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (when (< emacs-major-version 27)
+    (defvar gnutls-algorithm-priority)
+    (defvar ghub-use-workaround-for-emacs-bug)
+    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"
+          ghub-use-workaround-for-emacs-bug nil))
   (setq
    create-lockfiles nil
    default-frame-alist '((ns-transparent-titlebar . t) (ns-appearance . dark))
