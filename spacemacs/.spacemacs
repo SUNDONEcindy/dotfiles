@@ -539,7 +539,7 @@ before packages are loaded."
 
   ;; autoformat buffer on save with black
   (add-hook 'python-mode-hook 'blacken-mode)
-
+  (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
   (add-hook 'python-mode-hook (lambda ()
                                 (sphinx-doc-mode t)
                                 (python-docstring-mode t)))
