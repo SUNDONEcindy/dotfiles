@@ -12,7 +12,7 @@
     "telemetry.enableTelemetry": false,
     "gitlens.keymap": "chorded",
     "gitlens.mode.active": "zen",
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "vscode-icons",
     "sync.gist": "ccacf01b7ae269de00170aec838d2658",
     "sync.quietSync": false,
     "sync.removeExtensions": true,
@@ -20,7 +20,6 @@
     "sync.autoDownload": false,
     "sync.autoUpload": false,
     "sync.forceDownload": false,
-    "workbench.colorTheme": "Sublime Material Theme - Dark",
     "editor.minimap.enabled": false,
     "vim.leader": "<space>",
     "vim.normalModeKeyBindings": [
@@ -1103,7 +1102,7 @@
     "editor.lineNumbers": "off",
     "editor.find.autoFindInSelection": true,
     "editor.renderLineHighlight": "none",
-    "editor.renderWhitespace": "boundary",
+    "editor.renderWhitespace": "all",
     "workbench.editor.tabSizing": "shrink",
     "workbench.quickOpen.preserveInput": true,
     "workbench.statusBar.feedback.visible": false,
@@ -1151,5 +1150,17 @@
     "gitlens.views.lineHistory.enabled": true,
     "editor.fontSize": 13,
     "git.confirmSync": false,
-    "autoDocstring.docstringFormat": "sphinx"
+    "autoDocstring.docstringFormat": "sphinx",
+    "path-intellisense.absolutePathToWorkspace": false,
+    "vim.foldfix": true,
+    "vim.highlightedyank.enable": true,
+    "vim.searchHighlightColor": "rgba(250, 240, 170, 0.5)",
+    "editor.renderControlCharacters": false,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "editor.formatOnSave": true,
+    "python.dataScience.askForKernelRestart": false,
+    "git.fetchOnPull": true,
+    "workbench.colorTheme": "Dark (Molokai)"
 }

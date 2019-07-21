@@ -6,7 +6,7 @@
   email = johnfarina@gmail.com
 
 [status]
-  showUntrackedFiles = all
+  showUntrackedFiles = normal
 
 [color]
 # ui = true is a superset of all the more specific color options
@@ -40,6 +40,7 @@
 
   # Prevent line ending issues--change to 'true' on Windows
   autocrlf = input
+	editor = code --wait
 
 [push]
   default = simple
@@ -68,6 +69,6 @@
 # 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 # 	trustExitCode = true
 [credential]
-	helper = cache --timeout=9000000
+	helper = cache --timeout=9000000000
 [github]
 	user = johnfarina
