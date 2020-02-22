@@ -1,5 +1,5 @@
 ;; -*- no-byte-compile: t; -*-
-;;; ~/.doom.d/packages.el
+;;; ~/.config/doom/packages.el
 
 ;;; Examples:
 ;; (package! some-package)
@@ -10,6 +10,3 @@
 (package! color-identifiers-mode)
 (package! python-docstring)
 (package! sphinx-doc)
-(package! company-statistics)
-(package! company-quickhelp)
-(package! forge)
