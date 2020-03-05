@@ -59,3 +59,4 @@
       "," #'+ein/hydra/body)
 
 (setq conda-env-home-directory "/home/jdfarin/.conda")
+(company-quickhelp-mode)
