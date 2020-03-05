@@ -19,10 +19,16 @@
        ;;japanese
 
        :completion
-       company           ; the ultimate code completion backend
+       (company           ; the ultimate code completion backend
+        +childframe)
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ivy               ; a search engine for love and life
+       (ivy               ; a search engine for love and life
+        +fuzzy
+        +prescient
+        +icons)
+       ;; +childframe
+
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -67,12 +73,12 @@
        :emacs
        (dired             ; making dired pretty [functional]
         +ranger
-        +icons
-        )
+        +icons)
+
        electric          ; smarter, keyword-based electric-indent
        (ibuffer           ; interactive buffer management
-        +icons
-        )
+        +icons)
+
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
@@ -82,7 +88,8 @@
        ;;vterm             ; another terminals in Emacs
 
        :checkers
-       syntax              ; tasing you for every semicolon you forget
+       (syntax              ; tasing you for every semicolon you forget
+        +childframe)
        ;;spell             ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
@@ -91,8 +98,8 @@
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
        (docker
-        +lsp
-        )
+        +lsp)
+
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
@@ -161,8 +168,8 @@
         +lsp
         +conda
         +pyenv
-        +cython
-        )
+        +cython)
+
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        rest              ; Emacs as a REST client
