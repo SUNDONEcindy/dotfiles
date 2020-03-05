@@ -57,3 +57,6 @@
 (map! :map ein:notebook-mode-map
       :localleader
       "," #'+ein/hydra/body)
+
+;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
+(company-quickhelp-mode)
