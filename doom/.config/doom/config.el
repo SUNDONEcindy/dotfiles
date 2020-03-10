@@ -60,3 +60,6 @@
 
 ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
 (company-quickhelp-mode)
+
+;; use `gs SPC (start typing the word you're looking at)` to jump to text in any open window
+(setq avy-all-windows t)
