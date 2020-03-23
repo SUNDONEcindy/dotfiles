@@ -63,3 +63,27 @@
 
 ;; use `gs SPC (start typing the word you're looking at)` to jump to text in any open window
 (setq avy-all-windows t)
+
+;; python repls popup to the right
+(set-popup-rules!
+  '(("^\\*Python"  :side right :width 0.4 :height 0.5 :select f :slot 0 :vslot 0 :quit nil)
+    ("^\\*jupyter-repl"  :side right :width 0.4 :height 0.5 :select f :slot 0 :vslot 0 :quit nil)))
+
+
+;; no automatic docstring popup buffer at the bottom, since it gets in the way
+(setq lsp-signature-auto-activate nil
+      lsp-signature-doc-lines nil)
+
+(setq
+      ;; lsp-ui-doc-max-height 40
+      ;; lsp-ui-doc-header t
+      lsp-ui-doc-enable t
+      lsp-ui-doc-delay 0)
+
+;; company
+(setq company-minimum-prefix-length 1
+      company-idle-delay 0.0)
+
+;; have emacs-jupyter paste code into the repl instead of just putting the
+;; output in the *messages* buffer
+(setq jupyter-repl-echo-eval-p)
