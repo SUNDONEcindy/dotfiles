@@ -87,3 +87,8 @@
 ;; have emacs-jupyter paste code into the repl instead of just putting the
 ;; output in the *messages* buffer
 (setq jupyter-repl-echo-eval-p t)
+
+;; TAB on an org-mode section header cycles in the usual way
+(after! evil-org
+  (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
+
