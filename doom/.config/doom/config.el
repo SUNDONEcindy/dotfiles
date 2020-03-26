@@ -86,4 +86,4 @@
 
 ;; have emacs-jupyter paste code into the repl instead of just putting the
 ;; output in the *messages* buffer
-(setq jupyter-repl-echo-eval-p)
+(setq jupyter-repl-echo-eval-p t)
