@@ -92,3 +92,7 @@
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
 
+(setq which-key-idle-delay 0.1)
+
+;; don't extend comments with o/O
+(setq +evil-want-o/O-to-continue-comments 'nil)
