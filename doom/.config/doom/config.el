@@ -54,35 +54,39 @@
 
 (add-hook! 'prog-mode-hook #'(rainbow-delimiters-mode global-color-identifiers-mode rainbow-mode highlight-quoted-mode))
 
-(map! :map ein:notebook-mode-map
-      :localleader
-      "," #'+ein/hydra/body)
+(after! rainbow-delimiters-mode
+  ;; more colors for parens
+  (setq rainbow-delimiters-max-face-count 6))
 
 ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
-(company-quickhelp-mode)
+;; (company-quickhelp-mode)
 
-;; use `gs SPC (start typing the word you're looking at)` to jump to text in any open window
-(setq avy-all-windows t)
+(after! avy
+  ;; use `gs SPC (start typing the word you're looking at)` to jump to text in any open window
+  (setq avy-all-windows t))
 
 ;; python repls popup to the right
 (set-popup-rules!
   '(("^\\*Python"  :side right :width 0.4 :height 0.5 :select f :slot 0 :vslot 0 :quit nil)
     ("^\\*jupyter-repl"  :side right :width 0.4 :height 0.5 :select f :slot 0 :vslot 0 :quit nil)))
 
+(after! lsp-mode
+  (setq
+    ;; no automatic docstring popup buffer at the bottom, since it gets in the way
+    lsp-signature-auto-activate nil
+    lsp-signature-doc-lines nil
 
-;; no automatic docstring popup buffer at the bottom, since it gets in the way
-(setq lsp-signature-auto-activate nil
-      lsp-signature-doc-lines nil)
+    ;; lsp-ui-doc-max-height 40
+    ;; lsp-ui-doc-header t
+    lsp-ui-doc-enable t
+    lsp-ui-doc-delay 0
+    read-process-output-max (* 1024 1024)))
 
-(setq
-      ;; lsp-ui-doc-max-height 40
-      ;; lsp-ui-doc-header t
-      lsp-ui-doc-enable t
-      lsp-ui-doc-delay 0)
-
-;; company
-(setq company-minimum-prefix-length 1
-      company-idle-delay 0.0)
+(after! company
+  ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
+  (company-quickhelp-mode)
+  (setq company-minimum-prefix-length 1
+        company-idle-delay 0.0))
 
 ;; have emacs-jupyter paste code into the repl instead of just putting the
 ;; output in the *messages* buffer
@@ -92,7 +96,17 @@
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
 
-(setq which-key-idle-delay 0.1)
+(setq
+  ;; can't be wrapped in after! because this needs to happen *before* whick-key is enabled
+  which-key-idle-delay 0.1
+  which-key-max-display-columns 6
+  which-key-max-description-length 'nil)
+
 
 ;; don't extend comments with o/O
 (setq +evil-want-o/O-to-continue-comments 'nil)
+
+;; keymaps
+(map! :map ein:notebook-mode-map
+      :localleader
+      "," #'+ein/hydra/body)

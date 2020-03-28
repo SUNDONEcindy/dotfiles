@@ -56,3 +56,4 @@
 (package! python-docstring)
 (package! sphinx-doc)
 (package! company-quickhelp)
+;; (package! python-cell)
