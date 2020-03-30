@@ -70,17 +70,22 @@
   '(("^\\*Python"  :side right :width 0.4 :height 0.5 :select f :slot 0 :vslot 0 :quit nil)
     ("^\\*jupyter-repl"  :side right :width 0.4 :height 0.5 :select f :slot 0 :vslot 0 :quit nil)))
 
+
+(setq-hook! 'lsp-mode-hook
+  company-backends (cons '(company-lsp :separate company-yasnippet company-files) company-backends))
+
+
 (after! lsp-mode
   (setq
-    ;; no automatic docstring popup buffer at the bottom, since it gets in the way
-    lsp-signature-auto-activate nil
-    lsp-signature-doc-lines nil
+   ;; no automatic docstring popup buffer at the bottom, since it gets in the way
+   lsp-signature-auto-activate nil
+   lsp-signature-doc-lines nil
 
-    ;; lsp-ui-doc-max-height 40
-    ;; lsp-ui-doc-header t
-    lsp-ui-doc-enable t
-    lsp-ui-doc-delay 0
-    read-process-output-max (* 1024 1024)))
+   ;; lsp-ui-doc-max-height 40
+   ;; lsp-ui-doc-header t
+   lsp-ui-doc-enable t
+   lsp-ui-doc-delay 0
+   read-process-output-max (* 1024 1024)))
 
 (after! company
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
@@ -97,10 +102,10 @@
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
 
 (setq
-  ;; can't be wrapped in after! because this needs to happen *before* whick-key is enabled
-  which-key-idle-delay 0.1
-  which-key-max-display-columns 6
-  which-key-max-description-length 'nil)
+ ;; can't be wrapped in after! because this needs to happen *before* whick-key is enabled
+ which-key-idle-delay 0.1
+ which-key-max-display-columns 6
+ which-key-max-description-length 'nil)
 
 
 ;; don't extend comments with o/O
