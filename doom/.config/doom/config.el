@@ -93,6 +93,9 @@
   (setq company-minimum-prefix-length 1
         company-idle-delay 0.0))
 
+(after! company-box
+  company-box-doc-enable nil)
+
 ;; have emacs-jupyter paste code into the repl instead of just putting the
 ;; output in the *messages* buffer
 (setq jupyter-repl-echo-eval-p t)
