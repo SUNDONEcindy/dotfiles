@@ -114,6 +114,8 @@
  which-key-max-display-columns 6
  which-key-max-description-length 'nil)
 
+;; n/N insted of ;/, to repeat searches etc
+(setq +evil-repeat-keys '("n" . "N"))
 
 ;; don't extend comments with o/O
 (setq +evil-want-o/O-to-continue-comments 'nil)
