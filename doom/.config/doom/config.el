@@ -120,6 +120,9 @@
 ;; don't extend comments with o/O
 (setq +evil-want-o/O-to-continue-comments 'nil)
 
+;; make undo more fine-grained
+(setq evil-want-fine-undo t)
+
 ;; sort which-key alphabetically, with group prefixes at the end
 (defun my-which-key-key-order-alpha (acons bcons)
   (let ((apref? (which-key--group-p (cdr acons)))
