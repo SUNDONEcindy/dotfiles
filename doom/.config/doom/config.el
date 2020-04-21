@@ -104,6 +104,11 @@
 ;; output in the *messages* buffer
 (setq jupyter-repl-echo-eval-p t)
 
+;; use jupyter's lookup (bound to ~k~) for documentation in jupyter buffers
+(after! jupyter
+  (set-lookup-handlers! '(jupyter-repl-mode jupyter-org-interaction-mode jupyter-repl-interaction-mode)
+    :documentation '(jupyter-inspect-at-point :async t)))
+
 ;; TAB on an org-mode section header cycles in the usual way
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
