@@ -120,6 +120,16 @@
 ;; don't extend comments with o/O
 (setq +evil-want-o/O-to-continue-comments 'nil)
 
+;; sort which-key alphabetically, with group prefixes at the end
+(defun my-which-key-key-order-alpha (acons bcons)
+  (let ((apref? (which-key--group-p (cdr acons)))
+        (bpref? (which-key--group-p (cdr bcons))))
+    (if (not (eq apref? bpref?))
+        (and (not apref?) bpref?)
+      (which-key--key-description< (car acons) (car bcons) t))))
+
+(setq which-key-sort-order 'my-which-key-key-order-alpha)
+
 ;; keymaps
 (map! :map ein:notebook-mode-map
       :localleader
