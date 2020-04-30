@@ -128,6 +128,9 @@
 ;; make undo more fine-grained
 (setq evil-want-fine-undo t)
 
+;; Make * use symbol boundaries instead of word boundaries
+(setq evil-symbol-word-search t)
+
 ;; sort which-key alphabetically, with group prefixes at the end
 (defun my-which-key-key-order-alpha (acons bcons)
   (let ((apref? (which-key--group-p (cdr acons)))
