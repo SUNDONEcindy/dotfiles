@@ -74,6 +74,7 @@
        (dired             ; making dired pretty [functional]
         +ranger
         +icons)
+       (undo +tree)
 
        electric          ; smarter, keyword-based electric-indent
        (ibuffer           ; interactive buffer management
@@ -160,6 +161,7 @@
         +jupyter        ; ipython/jupyter support for babel
         +pandoc          ; export-with-pandoc support
         ;;+pomodoro        ; be fruitful with the tomato technique
+        +roam
         +present)        ; using org-mode for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
