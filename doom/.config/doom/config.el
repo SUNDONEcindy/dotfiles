@@ -141,6 +141,11 @@
 
 (setq which-key-sort-order 'my-which-key-key-order-alpha)
 
+;; reload buffers when the associated file on disk changes
+(global-auto-revert-mode 1)
+;; and do so after 1 second (default is 5 seconds)
+(setq auto-revert-timer 1)
+
 ;; keymaps
 (map! :map ein:notebook-mode-map
       :localleader
