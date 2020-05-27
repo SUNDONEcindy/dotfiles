@@ -146,6 +146,9 @@
 ;; and do so after 1 second (default is 5 seconds)
 (setq auto-revert-timer 1)
 
+;; reuse normal ssh controlmaster option from ~/.ssh/config
+(setq tramp-ssh-controlmaster-options "")
+
 ;; keymaps
 (map! :map ein:notebook-mode-map
       :localleader
