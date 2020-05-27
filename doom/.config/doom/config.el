@@ -149,6 +149,13 @@
 ;; reuse normal ssh controlmaster option from ~/.ssh/config
 (setq tramp-ssh-controlmaster-options "")
 
+;; from an ivy buffer, C-o will show a list of available actions in a hydra
+;; above the ivy buffer
+(setq ivy-read-action-function #'ivy-hydra-read-action)
+;; alternatively, show a list of available actions directly in the ivy buffer
+;; (replaces contents of your current ivy buffer and exiting seems slower)
+;; (setq ivy-read-action-function #'ivy-read-action-ivy)
+
 ;; keymaps
 (map! :map ein:notebook-mode-map
       :localleader
