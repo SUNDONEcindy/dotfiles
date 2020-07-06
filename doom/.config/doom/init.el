@@ -21,10 +21,12 @@
        :completion
        (company           ; the ultimate code completion backend
         +childframe)
+
+
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        (ivy               ; a search engine for love and life
-        +fuzzy
+        ;; +fuzzy
         +prescient
         +icons)
        ;; +childframe
@@ -74,6 +76,7 @@
        (dired             ; making dired pretty [functional]
         +ranger
         +icons)
+       (undo +tree)
 
        electric          ; smarter, keyword-based electric-indent
        (ibuffer           ; interactive buffer management
@@ -83,9 +86,9 @@
 
        :term
        ;;eshell            ; a consistent, cross-platform shell (WIP)
-       shell             ; a terminal REPL for Emacs
-       term              ; terminals in Emacs
-       ;;vterm             ; another terminals in Emacs
+       ;; shell             ; a terminal REPL for Emacs
+       ;; term              ; terminals in Emacs
+       vterm             ; another terminals in Emacs
 
        :checkers
        (syntax              ; tasing you for every semicolon you forget
@@ -95,7 +98,8 @@
 
        :tools
        ;;ansible
-       ;;debugger          ; FIXME stepping through code, to help you add bugs
+       (debugger          ; FIXME stepping through code, to help you add bugs
+        +lsp)
        ;;direnv
        (docker
         +lsp)
@@ -105,7 +109,8 @@
        (eval +overlay)     ; run code, run (also, repls)
        gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
-        +docsets)        ; ...or in Dash docsets locally
+        +docsets        ; ...or in Dash docsets locally
+        +dictionary)
        lsp
        ;;macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
@@ -150,7 +155,7 @@
        ;;ledger            ; an accounting system in Emacs
        ;;lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
-       ;;nim               ; python + lisp at the speed of c
+       nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
@@ -159,6 +164,7 @@
         +jupyter        ; ipython/jupyter support for babel
         +pandoc          ; export-with-pandoc support
         ;;+pomodoro        ; be fruitful with the tomato technique
+        +roam
         +present)        ; using org-mode for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
@@ -182,7 +188,7 @@
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       ;;web               ; the tubes
+       web               ; the tubes
 
        :email
        ;;(mu4e +gmail)
@@ -198,3 +204,7 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+
+;; Evil needs some settings earlier than config.el
+;; Work on visual lines instead of real lines (e.g. j/k are gj/gk)
+(setq evil-respect-visual-line-mode t)

@@ -56,3 +56,5 @@
 (package! python-docstring)
 (package! sphinx-doc)
 (package! company-quickhelp)
+(package! yaml-mode)
+;; (package! python-cell)
