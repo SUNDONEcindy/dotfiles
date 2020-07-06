@@ -19,7 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Menlo" :size 14))
+(when (symbol-name system-type)
+  (setq doom-font (font-spec :family "Menlo" :size 15)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -155,6 +156,9 @@
 ;; alternatively, show a list of available actions directly in the ivy buffer
 ;; (replaces contents of your current ivy buffer and exiting seems slower)
 ;; (setq ivy-read-action-function #'ivy-read-action-ivy)
+
+;; larger scrollback buffer in vterm
+(setq vterm-max-scrollback 100000)
 
 ;; keymaps
 (map! :map ein:notebook-mode-map
