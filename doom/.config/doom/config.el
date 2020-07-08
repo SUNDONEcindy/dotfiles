@@ -19,7 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "monospace" :size 14))
+(when (string-match "darwin" (symbol-name system-type))
+  (setq doom-font (font-spec :family "Menlo" :size 15)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -75,15 +76,15 @@
     ("^\\*jupyter-repl"  :side right :width 0.4 :height 0.5 :select f :slot 0 :vslot 0 :quit nil)))
 
 
-(setq-hook! 'lsp-mode-hook
-  company-backends (cons '(company-lsp :separate company-yasnippet company-files) company-backends))
+;; (setq-hook! 'lsp-mode-hook
+;;   company-backends (cons '(company-lsp :separate company-capf company-yasnippet company-files) company-backends))
 
 
 (after! lsp-mode
   (setq
    ;; no automatic docstring popup buffer at the bottom, since it gets in the way
-   lsp-signature-auto-activate nil
-   lsp-signature-doc-lines nil
+   ;; lsp-signature-auto-activate nil
+   ;; lsp-signature-doc-lines nil
 
    ;; lsp-ui-doc-max-height 40
    ;; lsp-ui-doc-header t
@@ -156,6 +157,9 @@
 ;; (replaces contents of your current ivy buffer and exiting seems slower)
 ;; (setq ivy-read-action-function #'ivy-read-action-ivy)
 
+;; larger scrollback buffer in vterm
+(setq vterm-max-scrollback 100000)
+
 ;; keymaps
 (map! :map ein:notebook-mode-map
       :localleader
@@ -222,4 +226,3 @@
 
 
 
->>>>>>> 9672edd2953f9d73758a80d078eaf709a731c4b9
