@@ -76,15 +76,15 @@
     ("^\\*jupyter-repl"  :side right :width 0.4 :height 0.5 :select f :slot 0 :vslot 0 :quit nil)))
 
 
-(setq-hook! 'lsp-mode-hook
-  company-backends (cons '(company-lsp :separate company-yasnippet company-files) company-backends))
+;; (setq-hook! 'lsp-mode-hook
+;;   company-backends (cons '(company-lsp :separate company-capf company-yasnippet company-files) company-backends))
 
 
 (after! lsp-mode
   (setq
    ;; no automatic docstring popup buffer at the bottom, since it gets in the way
-   lsp-signature-auto-activate nil
-   lsp-signature-doc-lines nil
+   ;; lsp-signature-auto-activate nil
+   ;; lsp-signature-doc-lines nil
 
    ;; lsp-ui-doc-max-height 40
    ;; lsp-ui-doc-header t
