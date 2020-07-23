@@ -174,6 +174,7 @@
         +lsp
         +conda
         +pyenv
+        +poetry
         +cython)
 
        ;;qt                ; the 'cutest' gui framework ever
