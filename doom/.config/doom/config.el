@@ -33,7 +33,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type nil)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -95,11 +95,11 @@
 (after! company
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
   (company-quickhelp-mode)
-  (setq company-minimum-prefix-length 1
+  (setq company-minimum-prefix-length 2
         company-idle-delay 0.0))
 
-(after! company-box
-  company-box-doc-enable nil)
+;; (after! company-box
+;;   company-box-doc-enable nil)
 
 ;; have emacs-jupyter paste code into the repl instead of just putting the
 ;; output in the *messages* buffer
@@ -122,6 +122,16 @@
 
 ;; n/N insted of ;/, to repeat searches etc
 (setq +evil-repeat-keys '("n" . "N"))
+
+;; make s/S, f/F, t/T search for next in whole buffer, instead of the default
+;; current line
+(setq evil-snipe-scope 'buffer)
+
+;; n/N in addition to ;/, to repeat evil-snipe searches
+(after! evil-snipe
+  (let ((map evil-snipe-parent-transient-map))
+    (define-key map "n" #'evil-snipe-repeat)
+    (define-key map "N" #'evil-snipe-repeat-reverse)))
 
 ;; don't extend comments with o/O
 (setq +evil-want-o/O-to-continue-comments 'nil)

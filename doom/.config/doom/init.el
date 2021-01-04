@@ -103,7 +103,7 @@
        ;;ansible
        (debugger          ; FIXME stepping through code, to help you add bugs
         +lsp)
-       ;;direnv
+       direnv
        (docker
         +lsp)
 
@@ -115,6 +115,9 @@
         +docsets        ; ...or in Dash docsets locally
         +dictionary)
        lsp
+        ;; +eglot
+
+
        magit             ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
@@ -124,7 +127,7 @@
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
        tmux              ; an API for interacting with tmux
-       ;;upload            ; map local to remote projects via ssh/ftp
+       upload            ; map local to remote projects via ssh/ftp
 
        :os
        (:if IS-MAC macos)  ; improve compatibility with macOS
