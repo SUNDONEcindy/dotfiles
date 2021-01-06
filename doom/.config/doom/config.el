@@ -234,5 +234,6 @@
     [tab]     #'company-complete-common-or-cycle
     [backtab] #'company-select-previous))
 
-
-
+;; hack to get rid of the following stupid errors:
+;; Error during redisplay: (eval (doom-modeline-segment--workspace-name)) signaled (void-function tab-bar--current-tab)
+(setq doom-modeline-workspace-name nil)
