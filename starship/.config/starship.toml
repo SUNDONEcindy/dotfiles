@@ -1,4 +1,15 @@
+[status]
+disabled = false
+
 [git_status]
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
+
+[git_commit]
+tag_disabled = false
+
+[memory_usage]
+disabled = false
+threshold = 70
+format = "$symbol [${ram}( | ${swap})]($style) "
