@@ -90,7 +90,8 @@
    ;; lsp-ui-doc-header t
    lsp-ui-doc-enable t
    lsp-ui-doc-delay 0
-   read-process-output-max (* 1024 1024)))
+   read-process-output-max (* 1024 1024))
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venv\\'"))
 
 (after! company
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
@@ -239,3 +240,7 @@
 (setq doom-modeline-workspace-name nil)
 
 (setq poetry-tracking-strategy 'projectile)
+
+;; forge stuff
+(after! forge
+  (add-to-list 'auth-sources "~/.authinfo"))
