@@ -46,3 +46,6 @@ fi
 # answering `yes' to the query when one didn't really mean
 # it.
 setopt RM_STAR_WAIT
+
+# starship prompt for maximum PS1 goodness!
+eval "$(starship init zsh)"
