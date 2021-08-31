@@ -38,7 +38,7 @@
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       ;;(emoji +unicode)  ; 🙂
+       (emoji +unicode)  ; 🙂
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
@@ -80,13 +80,11 @@
        (dired             ; making dired pretty [functional]
         +ranger
         +icons)
-       (undo +tree)
-
        electric          ; smarter, keyword-based electric-indent
+       (undo +tree)
+       vc                ; version-control and Emacs, sitting in a tree
        (ibuffer           ; interactive buffer management
         +icons)
-
-       vc                ; version-control and Emacs, sitting in a tree
 
        :term
        ;;eshell            ; a consistent, cross-platform shell (WIP)
@@ -97,7 +95,7 @@
        :checkers
        (syntax              ; tasing you for every semicolon you forget
         +childframe)
-       ;;spell             ; tasing you for misspelling mispelling
+       ;;(spell +flyspell) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
@@ -116,7 +114,7 @@
         +docsets        ; ...or in Dash docsets locally
         +dictionary)
        lsp
-        ;; +eglot
+       ;; +eglot
 
 
        (magit             ; a git porcelain for Emacs
@@ -133,11 +131,12 @@
 
        :os
        (:if IS-MAC macos)  ; improve compatibility with macOS
-       ;;tty               ; improve the terminal Emacs experience
+       tty               ; improve the terminal Emacs experience
 
        :lang
        ;;agda              ; types of types of types of types...
        ;;assembly          ; assembly for fun or debugging
+       ;;beancount         ; mind the GAAP
        ;;cc                ; C/C++/Obj-C madness
        ;;clojure           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
@@ -146,11 +145,13 @@
        ;;csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
+       ;;dhall
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
+       ;;factor
        ;;faust             ; dsp, but you get to keep your soul
        ;;fsharp           ; ML stands for Microsoft's Language
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
@@ -166,7 +167,6 @@
        ;;kotlin            ; a better, slicker Java(Script)
        latex             ; writing papers in Emacs has never been so fun
        ;;lean
-       ;;factor
        ;;ledger            ; an accounting system in Emacs
        ;;lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
@@ -216,6 +216,8 @@
 
        :app
        calendar
+       ;;emms
+       ;;everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
