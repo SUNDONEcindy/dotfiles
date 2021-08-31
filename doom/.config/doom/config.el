@@ -97,7 +97,7 @@
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
   (company-quickhelp-mode)
   (setq company-minimum-prefix-length 2
-        company-idle-delay 0.0))
+        company-idle-delay 0.5))
 
 ;; (after! company-box
 ;;   company-box-doc-enable nil)
