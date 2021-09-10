@@ -55,7 +55,7 @@ path=(
   ${HOME}/.poetry/bin
   ${HOME}/local/bin
   ${HOME}/local/miniconda3/bin
-  $HOME/anaconda3/bin
+  $HOME/local/anaconda3/bin
   /usr/local/krb5/bin
   /usr/local/ossh/bin
   /usr/local/{bin,sbin}
