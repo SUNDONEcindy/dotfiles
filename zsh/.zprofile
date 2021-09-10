@@ -52,6 +52,8 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   # ensure MHPCC ssh and kerberos take precedent
+  ${HOME}/local/bin
+  ${HOME}/local/miniconda3/bin
   $HOME/anaconda3/bin
   /usr/local/krb5/bin
   /usr/local/ossh/bin
