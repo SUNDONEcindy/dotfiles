@@ -1,0 +1,2 @@
+# conda env in the prompt is handled by starship
+changeps1: False

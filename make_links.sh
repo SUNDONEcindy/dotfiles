@@ -6,6 +6,9 @@ mkdir -p ${HOME}/.config
 
 # bash
 
+# conda
+ln -sv $(readlink -f conda/.condarc) ${HOME}/
+
 # chunkwm
 
 # doom
