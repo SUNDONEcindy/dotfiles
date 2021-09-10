@@ -19,6 +19,11 @@ if [[ -s "$HOME/.ansible_vault_pass.txt" ]]; then
   export ANSIBLE_VAULT_PASSWORD_FILE="$HOME/.ansible_vault_pass.txt"
 fi
 
+### Spack ###
+if [[ -s "${HOME}/local/spack/share/spack/setup-env.sh" ]]; then
+  source "${HOME}/local/spack/share/spack/setup-env.sh"
+fi
+
 
 ### NVM ###
 # Tell NVM where to store its nodes.
