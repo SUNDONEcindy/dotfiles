@@ -52,6 +52,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   # ensure MHPCC ssh and kerberos take precedent
+  ${HOME}/.poetry/bin
   ${HOME}/local/bin
   ${HOME}/local/miniconda3/bin
   $HOME/anaconda3/bin
@@ -76,5 +77,3 @@ export LESS='-g -i -M -R -S -w -z-4'
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
-
-export PATH="$HOME/.poetry/bin:$PATH"
