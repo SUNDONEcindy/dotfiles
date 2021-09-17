@@ -88,7 +88,7 @@ fi
 
 # ssh
 mkdir -p ${HOME}/.ssh
-chmod 600 ${HOME}/.ssh
+chmod 700 ${HOME}/.ssh
 ln -sv $(readlink -f ssh/.ssh/config) ${HOME}/.ssh/
 
 # starship
