@@ -34,12 +34,12 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'fzf' \
+  'fzf-tab' \
   'fasd' \
   'syntax-highlighting' \
   'history-substring-search' \
-  'autosuggestions' \
-  'fzf' \
-  'fzf-tab'
+  'autosuggestions'
   # 'prompt'
 
 
