@@ -24,10 +24,6 @@ if [[ -s "${HOME}/local/spack/share/spack/setup-env.sh" ]]; then
   source "${HOME}/local/spack/share/spack/setup-env.sh"
 fi
 
-### fzf location, if it's installed in ~/local/bin
-if [[ -s "${HOME}/local/bin/fzf" ]]; then
-  export FZF_BASE="${HOME}/local/bin"
-fi
 
 ### NVM ###
 # Tell NVM where to store its nodes.
@@ -54,5 +50,3 @@ fi
 # use pudb as breakpoint() in python3
 export PYTHONBREAKPOINT=pudb.set_trace
 
-### fzf configuration
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
