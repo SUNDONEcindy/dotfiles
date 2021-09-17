@@ -53,8 +53,12 @@ eval "$(starship init zsh)"
 ### fzf location, if it's installed in ~/local/bin
 # for some reason this doesn't work if it's in ~/.zshenv
 if [[ -s "${HOME}/local/bin/fzf" ]]; then
-  echo "FOUND FZF"
   export FZF_BASE="${HOME}/local/bin"
 fi
 ### fzf configuration
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
+if [[ -d "${HOME}/modulefiles" ]]; then
+  module use ${HOME}/modulefiles
+  module load slurm
+fi
