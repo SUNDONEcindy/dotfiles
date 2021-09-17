@@ -78,9 +78,3 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
-### fzf location, if it's installed in ~/local/bin
-if [[ -s "${HOME}/local/bin/fzf" ]]; then
-  export FZF_BASE="${HOME}/local/bin"
-fi
-### fzf configuration
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
