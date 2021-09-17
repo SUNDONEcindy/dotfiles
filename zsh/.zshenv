@@ -50,3 +50,5 @@ fi
 # use pudb as breakpoint() in python3
 export PYTHONBREAKPOINT=pudb.set_trace
 
+### fzf configuration
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
