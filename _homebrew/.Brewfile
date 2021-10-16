@@ -20,21 +20,36 @@
 
 
 # Install all the things:
-brew 'zsh'
-brew 'ssh-copy-id'
+# brew 'zsh'
+# brew 'ssh-copy-id'
+brew 'bat # better less
 brew 'fasd' # Fast directory switcher
-brew 'git'
+# brew 'git'
 brew 'gibo' # quickly access Github's git ignore templates
-brew 'homebrew/dupes/less'
+# brew 'homebrew/dupes/less'
 brew 'lesspipe' # pre-processes various file formats so they can be paged via Less
-brew 'ctags'
+# brew 'ctags'
 brew 'stow'
-brew 'tmux'
+$ brew 'tmux'
 brew 'htop'
-brew 'iftop'
+$ brew 'iftop'
 brew 'ag' # Faster grep
 brew 'ncdu' # ncurses-based directory/file size viewer
 brew 'tree'
+brew 'homebrew/cask-fonts/font-juliamono'
+brew 'adobe-acrobat-reader'
+brew 'iterm2'
+brew 'mattermost'
+brew 'slack'
+brew 'visual-studio-code'
+brew 'keepassxc'
+brew 'stats'
+brew 'vlc'
+brew 'fzf'
+brew 'pyenv'
+brew 'jq'
+brew 'shkd'
+brew 'starship'
 
 # Databases
 # brew 'sqlite'
