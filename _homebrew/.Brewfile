@@ -50,6 +50,7 @@ brew 'pyenv'
 brew 'jq'
 brew 'shkd'
 brew 'starship'
+brew 'pygments'
 
 # Databases
 # brew 'sqlite'

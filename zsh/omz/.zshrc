@@ -112,7 +112,15 @@ export HISTSIZE=100000
 # export MANPATH="/usr/local/man:$MANPATH"
 export MANPATH="/usr/local/krb5/man:$MANPATH"
 
-export LESSOPEN="|/opt/homebrew/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1 
+# export BAT_THEME=Dracula
+export BAT_THEME=base16-256
+
+export LESSOPEN="| $(which lesspipe.sh) %s" LESS_ADVANCED_PREPROCESSOR=1
+
+# use colorized less and cat
+export ZSH_COLORIZE_STYLE='monokai'
+alias less=cless
+alias cat=ccat
 
 # make linuxbrew use newer git and curl
 #export HOMEBREW_NO_ENV_FILTERING=1
@@ -142,4 +150,4 @@ export LESSOPEN="|/opt/homebrew/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 #
 
 eval $(starship init zsh)
-
+eval "$(/opt/homebrew/bin/brew shellenv)"

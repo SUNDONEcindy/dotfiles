@@ -111,9 +111,13 @@ fi
 # ln -sv $(readlink -f vimify/.editrc) ${HOME}/
 # ln -sv $(readlink -f vimify/.inputrc) ${HOME}/
 
-# zsh
-ln -sv $(readlink -f zsh/.zlogin) ${HOME}/
-ln -sv $(readlink -f zsh/.zpreztorc) ${HOME}/
-ln -sv $(readlink -f zsh/.zprofile) ${HOME}/
-ln -sv $(readlink -f zsh/.zshenv) ${HOME}/
-ln -sv $(readlink -f zsh/.zshrc) ${HOME}/
+# zsh prezto
+# ln -sv $(readlink -f zsh/prezto/.zlogin) ${HOME}/
+# ln -sv $(readlink -f zsh/prezto/.zpreztorc) ${HOME}/
+# ln -sv $(readlink -f zsh/prezto/.zprofile) ${HOME}/
+# ln -sv $(readlink -f zsh/prezto/.zshenv) ${HOME}/
+# ln -sv $(readlink -f zsh/prezto/.zshrc) ${HOME}/
+
+# zsh oh-my-zsh
+ln -sv $(readlink -f zsh/omz/.zprofile) ${HOME}/
+ln -sv $(readlink -f zsh/omz/.zshrc) ${HOME}/
