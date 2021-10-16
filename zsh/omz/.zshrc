@@ -4,13 +4,15 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  ${HOME}/.fzf/bin
-  ${HOME}/.poetry/bin
+  # ${HOME}/.fzf/bin
+  # ${HOME}/.poetry/bin
+  ${HOME}/.emacs.d/bin
+  $(pyenv root)/shims
   # ensure MHPCC ssh and kerberos take precedent
   /usr/local/krb5/bin
   /usr/local/ossh/bin
   ${HOME}/local/bin
-  ${HOME}/local/miniconda3/bin
+  # ${HOME}/local/miniconda3/bin
   /usr/local/{bin,sbin}
   $path
 )
@@ -24,7 +26,8 @@ export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 # Path to your oh-my-zsh installation.
-export ZSH="/work1/home/jdfarin/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
+#export ZSH="/work1/home/jdfarin/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -64,7 +67,7 @@ export ZSH="/work1/home/jdfarin/.oh-my-zsh"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
@@ -93,7 +96,8 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git 
-	colored-man-pages 
+	colored-man-pages
+  colorize
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	fzf
@@ -108,9 +112,11 @@ export HISTSIZE=100000
 # export MANPATH="/usr/local/man:$MANPATH"
 export MANPATH="/usr/local/krb5/man:$MANPATH"
 
+export LESSOPEN="|/opt/homebrew/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1 
+
 # make linuxbrew use newer git and curl
 #export HOMEBREW_NO_ENV_FILTERING=1
-export HOMEBREW_GIT_PATH=${HOME}/local/bin/git
+# export HOMEBREW_GIT_PATH=${HOME}/local/bin/git
 #export HOMEBREW_CURL_PATH=${HOME}/local/bin/curl
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -136,20 +142,4 @@ export HOMEBREW_GIT_PATH=${HOME}/local/bin/git
 #
 
 eval $(starship init zsh)
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/work1/home/jdfarin/local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/work1/home/jdfarin/local/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/work1/home/jdfarin/local/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/work1/home/jdfarin/local/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
