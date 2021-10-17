@@ -6,24 +6,36 @@ typeset -gU cdpath fpath mailpath path
 path=(
   # ${HOME}/.fzf/bin
   # ${HOME}/.poetry/bin
-  ${HOME}/.emacs.d/bin
+  # ${HOME}/.emacs.d/bin
   $(pyenv root)/shims
   # ensure MHPCC ssh and kerberos take precedent
   /usr/local/krb5/bin
   /usr/local/ossh/bin
-  ${HOME}/local/bin
+  # ${HOME}/local/bin
   # ${HOME}/local/miniconda3/bin
   /usr/local/{bin,sbin}
   $path
 )
 
+# preprend some paths, if they exist
+for d in ${HOME}/.emacs.d/bin \
+  ${HOME}/.fzf/bin \
+  ${HOME}/.poetry/bin \
+  ${HOME}/local/miniconda3/bin \
+  ${HOME}/local/bin; do
+
+  if [[ -d ${d} ]]; then
+    path=(
+      ${d}
+      $path
+    )
+  fi
+done
+
 if [[ -d ${HOME}/modulefile ]]; then
   module use ${HOME}/modulefile
 fi
 
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
-
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
