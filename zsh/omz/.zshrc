@@ -129,10 +129,28 @@ export BAT_THEME=base16-256
 
 export LESSOPEN="| $(which lesspipe.sh) %s" LESS_ADVANCED_PREPROCESSOR=1
 
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
+
 # use colorized less and cat
 export ZSH_COLORIZE_STYLE='monokai'
 alias less=cless
 alias cat=ccat
+
+# fzf-tab stuff
+export FZF_DEFAULT_OPTS='--height 100% --layout=reverse --border'
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
+# needed because we pass '--border'
+zstyle ':fzf-tab:*' fzf-pad 4
+
 
 # make linuxbrew use newer git and curl
 #export HOMEBREW_NO_ENV_FILTERING=1
@@ -161,5 +179,10 @@ alias cat=ccat
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
+# setup starship prompt
 eval $(starship init zsh)
-eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# and make brew work
+if [[ -d /opt/homebrew/bin ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
