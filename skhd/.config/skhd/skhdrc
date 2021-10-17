@@ -83,13 +83,16 @@ cmd - k : yabai -m window --focus north
 cmd - l : yabai -m window --focus east
 
 # swap managed window
-shift + cmd - h : yabai -m window --swap west
-shift + cmd - j : yabai -m window --swap south
-shift + cmd - k : yabai -m window --swap north
-shift + cmd - l : yabai -m window --swap east
+alt + cmd - h : yabai -m window --swap west
+alt + cmd - j : yabai -m window --swap south
+alt + cmd - k : yabai -m window --swap north
+alt + cmd - l : yabai -m window --swap east
 
 # move managed window
-# shift + cmd - h : yabai -m window --warp east
+shift + cmd - h : yabai -m window --warp west
+shift + cmd - j : yabai -m window --warp south
+shift + cmd - k : yabai -m window --warp north
+shift + cmd - l : yabai -m window --warp east
 
 # balance size of windows
 # shift + alt - 0 : yabai -m space --balance
@@ -158,7 +161,7 @@ cmd - d : yabai -m window --toggle zoom-parent
 cmd - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window split type
-# alt - e : yabai -m window --toggle split
+cmd - y : yabai -m window --toggle split
 
 # float / unfloat window and center on screen
 shift + cmd - space : yabai -m window --toggle float;\
