@@ -110,6 +110,8 @@ export ZSH="${HOME}/.oh-my-zsh"
 plugins=(git 
 	colored-man-pages
   colorize
+  jsontools
+  ripgrep
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	fzf
