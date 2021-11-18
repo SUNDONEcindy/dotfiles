@@ -4,15 +4,13 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  # ${HOME}/.fzf/bin
-  # ${HOME}/.poetry/bin
-  # ${HOME}/.emacs.d/bin
-  $(pyenv root)/shims
-  # ensure MHPCC ssh and kerberos take precedent
+  # NOTE: ensure MHPCC ssh and kerberos take precedent
+  # pyenv does weird stuff that silently overrides this if it comes first in $PATH
   /usr/local/krb5/bin
   /usr/local/ossh/bin
-  # ${HOME}/local/bin
-  # ${HOME}/local/miniconda3/bin
+
+  # NOTE: must come after kerberos and kerberized-ssh paths
+  $(pyenv root)/shims
   /usr/local/{bin,sbin}
   $path
 )
@@ -188,3 +186,8 @@ eval $(starship init zsh)
 if [[ -d /opt/homebrew/bin ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+# pyenv-virtualenv automatically activates when entering a dir containing a .python-version file
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
