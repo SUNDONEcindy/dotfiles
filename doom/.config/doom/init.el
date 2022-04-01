@@ -113,8 +113,8 @@
        (lookup           ; helps you navigate your code and documentation
         +docsets        ; ...or in Dash docsets locally
         +dictionary)
-       lsp
-       ;; +eglot
+       (lsp
+        +eglot)
 
 
        (magit             ; a git porcelain for Emacs

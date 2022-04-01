@@ -53,7 +53,11 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
-(add-hook! 'prog-mode-hook #'(rainbow-delimiters-mode global-color-identifiers-mode rainbow-mode highlight-quoted-mode))
+;; (add-hook! 'prog-mode-hook #'(rainbow-delimiters-mode global-color-identifiers-mode rainbow-mode highlight-quoted-mode))
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook 'global-color-identifiers-mode)
+(add-hook 'prog-mode-hook 'rainbow-mode)
+(add-hook 'prog-mode-hook 'highlight-quoted-mode)
 
 (after! rainbow-delimiters-mode
   ;; more colors for parens
