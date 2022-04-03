@@ -68,7 +68,7 @@ yabai -m rule --add label="Microsoft AutoUpdate" app="Microsoft AutoUpdate" mana
 # yabai -m rule --add label="vlc" app="VLC" manage=off
 
 # focus the last active window after closing an application or one of its windows
-yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"
+#yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"
 
 set +x
