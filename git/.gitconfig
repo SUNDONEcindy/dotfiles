@@ -72,3 +72,6 @@
 	helper = cache --timeout=9000000000
 [github]
 	user = johnfarina
+
+[includeIf "gitdir:~/proj/work/mhpcc/"]
+	path = ~/proj/work/mhpcc/.gitconfig
