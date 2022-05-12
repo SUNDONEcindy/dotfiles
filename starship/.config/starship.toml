@@ -1,3 +1,6 @@
+[conda]
+disabled = true
+
 [status]
 disabled = false
 
