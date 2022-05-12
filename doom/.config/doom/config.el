@@ -68,6 +68,7 @@
 
 ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
 ;; (company-quickhelp-mode)
+(setq conda-anaconda-home (expand-file-name "~/.pyenv/versions/mambaforge"))
 
 (after! magit
   ;; magit open in a vertical split instead of using the current window
