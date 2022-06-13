@@ -76,6 +76,9 @@
 # A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
 # ############################################################### #
 
+# launch iTerm2
+lcmd - return : osascript -e 'tell application "iTerm2" to create window with default profile' > /dev/null 2>&1
+
 # focus window
 lcmd - h : yabai -m window --focus west
 lcmd - j : yabai -m window --focus south
