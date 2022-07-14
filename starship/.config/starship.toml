@@ -1,5 +1,10 @@
 [conda]
-disabled = true
+disabled = false
+
+[directory]
+truncation_symbol = "…/"
+truncation_length = 8
+truncate_to_repo = false
 
 [status]
 disabled = false

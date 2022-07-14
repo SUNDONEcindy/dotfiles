@@ -107,8 +107,10 @@ export ZSH="${HOME}/.oh-my-zsh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git 
 	colored-man-pages
-  colorize
-  jsontools
+	colorize
+	docker
+	docker-compose
+	jsontools
   ripgrep
 	zsh-autosuggestions
 	zsh-syntax-highlighting
@@ -131,10 +133,10 @@ export LESSOPEN="| $(which lesspipe.sh) %s" LESS_ADVANCED_PREPROCESSOR=1
 
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
 
-# use colorized less and cat
+# use colorized less and cat (cless and ccat, respectively)
 export ZSH_COLORIZE_STYLE='monokai'
-alias less=cless
-alias cat=ccat
+# alias less=cless
+# alias cat=ccat
 
 # fzf-tab stuff
 export FZF_DEFAULT_OPTS='--height 100% --layout=reverse --border'
