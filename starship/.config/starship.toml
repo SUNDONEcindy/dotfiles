@@ -1,5 +1,5 @@
 [conda]
-disabled = false
+disabled = true
 
 [directory]
 truncation_symbol = "…/"
