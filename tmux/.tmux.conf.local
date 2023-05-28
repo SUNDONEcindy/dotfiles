@@ -297,3 +297,5 @@ bind-key ` send-prefix
 #set -g status-position top
 
 # test comment
+
+set -sg repeat-time 300                   # increase repeat timeout

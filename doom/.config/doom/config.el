@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-moonlight)
 (setq doom-dracula-brighter-comments t
       doom-dracula-comment-bg t
       doom-dracula-colorful-headers t)
@@ -106,22 +106,58 @@
     ("^\\*jupyter-repl"  :side right :width 0.4 :height 0.5 :select f :slot 0 :vslot 0 :quit nil)))
 
 ;; python prompt warning suppression
-(after! python-mode
-  (setq python-shell-prompt-detect-failure-warning nil))
+(after! python
+  (setq python-shell-prompt-detect-failure-warning nil)
+  ;; (add-hook! 'python-mode-hook #'python-black-on-save-mode)
+  (add-hook! 'python-mode-hook 'code-cells-mode-maybe)
+  (map! :map code-cells-mode-map
+        ;; :n "g j" nil
+        ;; :n "g k" nil
+        ;; :ni [S-return] nil
+        :n "g j" #'code-cells-forward-cell
+        :n "g k" #'code-cells-backward-cell
+        :ni [S-return] #'code-cells-eval)
+  (map!
+   :map python-mode-map
+   :localleader
+   (:prefix ("b" . "python-black")
+    :desc "Blacken Buffer" "b" #'python-black-buffer
+    :desc "Blacken Region" "r" #'python-black-region
+    :desc "Blacken Statement" "s" #'python-black-statement)
+
+   (:prefix ("c" . "code-cells")
+    :desc "Eval cell" "e" #'code-cells-eval
+    :desc "Next cell" "j" #'code-cells-forward-cell
+    :desc "Previous cell" "k" #'code-cells-backward-cell
+    )
+   ))
+
 
 ;; (setq-hook! 'lsp-mode-hook
 ;;   company-backends (cons '(company-lsp :separate company-capf company-yasnippet company-files) company-backends))
 
+;; configure eglot
+(after! eglot
+  (setq
+   eglot-ignored-server-capabilities '(:hoverProvider)
+   ))
 
+
+;; configure lsp-mode NOTE: currently unused since we're using eglot instead
 (after! lsp-mode
   (setq
    ;; no automatic docstring popup buffer at the bottom, since it gets in the way
    ;; lsp-signature-auto-activate nil
+   ;; lsp-signature-render-documentation nil
    ;; lsp-signature-doc-lines nil
 
-   ;; lsp-ui-doc-max-height 40
-   ;; lsp-ui-doc-header t
+   lsp-headerline-breadcrumb-enable t
    lsp-ui-doc-enable t
+   lsp-ui-doc-position "at-point"
+   lsp-ui-doc-use-webkit t
+   lsp-ui-doc-show-with-cursor t
+   lsp-ui-doc-max-height 40
+   lsp-ui-doc-header t
    lsp-ui-doc-delay 0
    read-process-output-max (* 1024 1024))
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venv\\'"))
@@ -130,7 +166,41 @@
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
   (company-quickhelp-mode)
   (setq company-minimum-prefix-length 2
-        company-idle-delay 0.5))
+        company-tooltip-idle-delay 0.1
+        company-idle-delay 0.0))
+
+(after! dap-mode
+  (setq dap-python-debugger 'debugpy)
+  (map! :map dap-mode-map
+        :leader
+        :prefix ("d" . "dap")
+        ;; basics
+        :desc "dap next"          "n" #'dap-next
+        :desc "dap step in"       "i" #'dap-step-in
+        :desc "dap step out"      "o" #'dap-step-out
+        :desc "dap continue"      "c" #'dap-continue
+        :desc "dap hydra"         "h" #'dap-hydra
+        :desc "dap debug restart" "r" #'dap-debug-restart
+        :desc "dap debug"         "s" #'dap-debug
+
+        ;; debug
+        :prefix ("dd" . "Debug")
+        :desc "dap debug recent"  "r" #'dap-debug-recent
+        :desc "dap debug last"    "l" #'dap-debug-last
+
+        ;; eval
+        :prefix ("de" . "Eval")
+        :desc "eval"                "e" #'dap-eval
+        :desc "eval region"         "r" #'dap-eval-region
+        :desc "eval thing at point" "s" #'dap-eval-thing-at-point
+        :desc "add expression"      "a" #'dap-ui-expressions-add
+        :desc "remove expression"   "d" #'dap-ui-expressions-remove
+
+        :prefix ("db" . "Breakpoint")
+        :desc "dap breakpoint toggle"      "b" #'dap-breakpoint-toggle
+        :desc "dap breakpoint condition"   "c" #'dap-breakpoint-condition
+        :desc "dap breakpoint hit count"   "h" #'dap-breakpoint-hit-condition
+        :desc "dap breakpoint log message" "l" #'dap-breakpoint-log-message))
 
 ;; (after! company-box
 ;;   company-box-doc-enable nil)
@@ -142,7 +212,11 @@
 ;; use jupyter's lookup (bound to ~k~) for documentation in jupyter buffers
 (after! jupyter
   (set-lookup-handlers! '(jupyter-repl-mode jupyter-org-interaction-mode jupyter-repl-interaction-mode)
-    :documentation '(jupyter-inspect-at-point :async t)))
+    :documentation '(jupyter-inspect-at-point :async t))
+  (map!
+   :map jupyter-repl-mode-map
+   :ni "<up>" #'jupyter-repl-history-previous-matching
+   :ni "<down>" #'jupyter-repl-history-next-matching))
 
 ;; TAB on an org-mode section header cycles in the usual way
 (after! evil-org
@@ -209,6 +283,15 @@
       :localleader
       "," #'+ein/hydra/body)
 
+;;  swap SPC ; and SPC :
+;; (map! :leader
+;;       ":" nil
+;;       ";" nil)
+
+;; (map! :leader
+;;       :desc "Eval expression" ":" #'pp-eval-expression
+;;       :desc "M-x" ";" #'execute-extended-command)
+
 ;; unfuck company keybindings
 ;; Specifically, this seems to fix the C-j/C-k for selecting next/previous
 ;; completion candidate, which sometimes breaks without this garbage hack
@@ -235,8 +318,8 @@
     "C-u"    nil
     "C-d"    nil
     "C-s"    nil
-    "C-S-s"   (cond ((featurep! :completion helm) nil)
-                    ((featurep! :completion ivy)  nil))
+    "C-S-s"   (cond ((modulep! :completion helm) nil)
+                    ((modulep! :completion ivy)  nil))
     "C-SPC"   nil
     "TAB"     nil
     [tab]     nil
@@ -261,8 +344,8 @@
     "C-u"     #'company-previous-page
     "C-d"     #'company-next-page
     "C-s"     #'company-filter-candidates
-    "C-S-s"   (cond ((featurep! :completion helm) #'helm-company)
-                    ((featurep! :completion ivy)  #'counsel-company))
+    "C-S-s"   (cond ((modulep! :completion helm) #'helm-company)
+                    ((modulep! :completion ivy)  #'counsel-company))
     "C-SPC"   #'company-complete-common
     "TAB"     #'company-complete-common-or-cycle
     [tab]     #'company-complete-common-or-cycle
@@ -312,3 +395,6 @@
    '(("" . "\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil . "◂\\1"))
    '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "◃\\1"))
    ))
+
+;; make the version control branch modeline info auto-update
+(setq auto-revert-check-vc-info t)

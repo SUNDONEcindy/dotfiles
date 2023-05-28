@@ -21,9 +21,10 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (company           ; the ultimate code completion backend
+       (company                         ; the ultimate code completion backend
         +tng
-        +childframe)
+        ;; +childframe
+        )
 
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
@@ -100,7 +101,7 @@
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
-       ;;ansible
+       ansible
        (debugger          ; FIXME stepping through code, to help you add bugs
         +lsp)
        direnv
@@ -115,7 +116,9 @@
         +dictionary)
        ;; lsp
        (lsp
-        +eglot)
+        +peek
+        ;; +eglot
+        )
 
 
        (magit             ; a git porcelain for Emacs
@@ -194,7 +197,7 @@
         ;; +conda
         +pyenv
         ;; +poetry
-        ;; +pyright
+        +pyright
         +tree-sitter
         +cython)
 

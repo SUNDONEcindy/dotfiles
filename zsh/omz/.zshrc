@@ -9,6 +9,9 @@ path=(
   /usr/local/krb5/bin
   /usr/local/ossh/bin
 
+  # pipx puts things in ~/.local/bin
+  ${HOME}/.local/bin
+
   # NOTE: must come after kerberos and kerberized-ssh paths
   $(pyenv root)/shims
   /usr/local/{bin,sbin}
@@ -126,8 +129,8 @@ export HISTSIZE=100000
 # export MANPATH="/usr/local/man:$MANPATH"
 export MANPATH="/usr/local/krb5/man:$MANPATH"
 
-# export BAT_THEME=Dracula
-export BAT_THEME=base16-256
+export BAT_THEME=Dracula
+# export BAT_THEME=base16-256
 
 export LESSOPEN="| $(which lesspipe.sh) %s" LESS_ADVANCED_PREPROCESSOR=1
 
