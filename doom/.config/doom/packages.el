@@ -59,4 +59,5 @@
 (package! company-quickhelp)
 (package! yaml-mode)
 (package! code-cells)
+(package! nerd-icons)
 ;; (package! python-cell)

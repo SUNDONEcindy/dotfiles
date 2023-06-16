@@ -354,6 +354,17 @@
 ;; hack to get rid of the following stupid errors:
 ;; Error during redisplay: (eval (doom-modeline-segment--workspace-name)) signaled (void-function tab-bar--current-tab)
 (setq doom-modeline-workspace-name nil)
+(setq
+;; more characters for the branch name (default is 12)
+ doom-modeline-vcs-max-length 25
+ ;; don't truncate file name in the modeline
+ ;; doom-modeline-buffer-file-name-style 'truncate-nil
+ doom-modeline-buffer-modification-icon 'nil
+ ;; just truncate everything up to the project root
+ doom-modeline-buffer-file-name-style 'relative-from-project)
+
+;; display battery status in the modeline
+(display-battery-mode 0)
 
 (setq poetry-tracking-strategy 'projectile)
 
