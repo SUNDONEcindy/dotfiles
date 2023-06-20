@@ -110,13 +110,14 @@
   (setq python-shell-prompt-detect-failure-warning nil)
   ;; (add-hook! 'python-mode-hook #'python-black-on-save-mode)
   (add-hook! 'python-mode-hook 'code-cells-mode-maybe)
-  (map! :map code-cells-mode-map
-        ;; :n "g j" nil
-        ;; :n "g k" nil
-        ;; :ni [S-return] nil
-        :n "g j" #'code-cells-forward-cell
-        :n "g k" #'code-cells-backward-cell
-        :ni [S-return] #'code-cells-eval)
+  (map!
+   :map code-cells-mode-map
+   ;; :n "g j" nil
+   ;; :n "g k" nil
+   ;; :ni [S-return] nil
+   :n "g j" #'code-cells-forward-cell
+   :n "g k" #'code-cells-backward-cell
+   :ni [S-return] #'code-cells-eval)
   (map!
    :map python-mode-map
    :localleader
@@ -145,6 +146,7 @@
 
 ;; configure lsp-mode NOTE: currently unused since we're using eglot instead
 (after! lsp-mode
+  (map! :desc "lsp-ui-doc-show" :n "g h" #'lsp-ui-doc-show)
   (setq
    ;; no automatic docstring popup buffer at the bottom, since it gets in the way
    ;; lsp-signature-auto-activate nil
@@ -166,6 +168,7 @@
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
   (company-quickhelp-mode)
   (setq company-minimum-prefix-length 2
+        company-quickhelp-delay 0.1
         company-tooltip-idle-delay 0.1
         company-idle-delay 0.0))
 
