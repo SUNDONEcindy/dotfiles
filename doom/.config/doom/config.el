@@ -164,7 +164,7 @@
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venv\\'"))
 
 ;; add company-files to backends for some modes
-(set-company-backend! '(prog-mode org-mode lisp-mode fundamental-mode) 'company-files)
+(set-company-backend! '(prog-mode text-mode org-mode lisp-mode fundamental-mode) 'company-files)
 
 (after! company
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
