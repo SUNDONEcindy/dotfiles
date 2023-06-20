@@ -60,4 +60,6 @@
 (package! yaml-mode)
 (package! code-cells)
 (package! nerd-icons)
+(package! org-modern)
+(package! yasnippet-snippets)
 ;; (package! python-cell)

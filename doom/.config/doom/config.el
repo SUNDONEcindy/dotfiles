@@ -221,9 +221,24 @@
    :ni "<up>" #'jupyter-repl-history-previous-matching
    :ni "<down>" #'jupyter-repl-history-next-matching))
 
+;; Default headers for jupyter-julia src blocks in org
+(setq org-babel-default-header-args:jupyter-python '((:session . "py")
+                                                    (:kernel . "python3")
+                                                    (:async . "yes")
+                                                    (:exports . "both")
+                                                    (:results . "output")))
+
+;; Default headers for jupyter-python src blocks in org
+(setq org-babel-default-header-args:jupyter-julia '((:session . "jl")
+                                                    (:kernel . "julia-1.9")
+                                                    (:async . "yes")
+                                                    (:exports . "both")
+                                                    (:results . "output")))
+
 ;; TAB on an org-mode section header cycles in the usual way
 (after! evil-org
-  (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
+  (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h)
+  (add-hook! 'org-mode-hook #'org-modern-mode))
 
 (setq
  ;; can't be wrapped in after! because this needs to happen *before* whick-key is enabled
