@@ -22,8 +22,8 @@
 
        :completion
        (company                         ; the ultimate code completion backend
-        +tng
-        ;; +childframe
+        ;; +tng
+        +childframe
         )
 
        ;;helm              ; the *other* search engine for love and life

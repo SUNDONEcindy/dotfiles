@@ -134,9 +134,6 @@
    ))
 
 
-;; (setq-hook! 'lsp-mode-hook
-;;   company-backends (cons '(company-lsp :separate company-capf company-yasnippet company-files) company-backends))
-
 ;; configure eglot
 (after! eglot
   (setq
@@ -167,6 +164,7 @@
 (after! company
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
   (company-quickhelp-mode)
+  ;; (set-company-backend! '(prog-mode org-mode fundamental-mode) 'company-files)
   (setq company-minimum-prefix-length 2
         company-quickhelp-delay 0.1
         company-tooltip-idle-delay 0.1
