@@ -161,10 +161,11 @@
    read-process-output-max (* 1024 1024))
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venv\\'"))
 
+
 (after! company
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
   (company-quickhelp-mode)
-  ;; (set-company-backend! '(prog-mode org-mode fundamental-mode) 'company-files)
+  (set-company-backend! '(prog-mode org-mode fundamental-mode) 'company-files)
   (setq company-minimum-prefix-length 2
         company-quickhelp-delay 0.1
         company-tooltip-idle-delay 0.1
