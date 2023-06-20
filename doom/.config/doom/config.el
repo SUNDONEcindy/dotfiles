@@ -144,6 +144,8 @@
 ;; configure lsp-mode NOTE: currently unused since we're using eglot instead
 (after! lsp-mode
   (map! :desc "lsp-ui-doc-show" :n "g h" #'lsp-ui-doc-show)
+  ;; add company-files as a backend since it gets swallowed somehow
+  (add-to-list '+lsp-company-backends 'company-files)
   (setq
    ;; no automatic docstring popup buffer at the bottom, since it gets in the way
    ;; lsp-signature-auto-activate nil
@@ -161,11 +163,12 @@
    read-process-output-max (* 1024 1024))
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venv\\'"))
 
+;; add company-files to backends for some modes
+(set-company-backend! '(prog-mode org-mode lisp-mode fundamental-mode) 'company-files)
 
 (after! company
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
   (company-quickhelp-mode)
-  (set-company-backend! '(prog-mode org-mode fundamental-mode) 'company-files)
   (setq company-minimum-prefix-length 2
         company-quickhelp-delay 0.1
         company-tooltip-idle-delay 0.1
@@ -312,61 +315,61 @@
 ;; unfuck company keybindings
 ;; Specifically, this seems to fix the C-j/C-k for selecting next/previous
 ;; completion candidate, which sometimes breaks without this garbage hack
-(after! company
-  (add-hook 'company-completion-started-hook 'custom/set-company-maps)
-  (add-hook 'company-completion-finished-hook 'custom/unset-company-maps)
-  (add-hook 'company-completion-cancelled-hook 'custom/unset-company-maps))
+;; (after! company
+;;   (add-hook 'company-completion-started-hook 'custom/set-company-maps)
+;;   (add-hook 'company-completion-finished-hook 'custom/unset-company-maps)
+;;   (add-hook 'company-completion-cancelled-hook 'custom/unset-company-maps))
 
-(defun custom/unset-company-maps (&rest unused)
-  "Set default mappings (outside of company).
-    Arguments (UNUSED) are ignored."
-  (general-def
-    :states 'insert
-    :keymaps 'override
-    "<down>" nil
-    "<up>"   nil
-    "RET"    nil
-    [return] nil
-    "C-n"    nil
-    "C-p"    nil
-    "C-j"    nil
-    "C-k"    nil
-    "C-h"    nil
-    "C-u"    nil
-    "C-d"    nil
-    "C-s"    nil
-    "C-S-s"   (cond ((modulep! :completion helm) nil)
-                    ((modulep! :completion ivy)  nil))
-    "C-SPC"   nil
-    "TAB"     nil
-    [tab]     nil
-    [backtab] nil))
+;; (defun custom/unset-company-maps (&rest unused)
+;;   "Set default mappings (outside of company).
+;;     Arguments (UNUSED) are ignored."
+;;   (general-def
+;;     :states 'insert
+;;     :keymaps 'override
+;;     "<down>" nil
+;;     "<up>"   nil
+;;     "RET"    nil
+;;     [return] nil
+;;     "C-n"    nil
+;;     "C-p"    nil
+;;     "C-j"    nil
+;;     "C-k"    nil
+;;     "C-h"    nil
+;;     "C-u"    nil
+;;     "C-d"    nil
+;;     "C-s"    nil
+;;     "C-S-s"   (cond ((modulep! :completion helm) nil)
+;;                     ((modulep! :completion ivy)  nil))
+;;     "C-SPC"   nil
+;;     "TAB"     nil
+;;     [tab]     nil
+;;     [backtab] nil))
 
-(defun custom/set-company-maps (&rest unused)
-  "Set maps for when you're inside company completion.
-    Arguments (UNUSED) are ignored."
-  (general-def
-    :states 'insert
-    :keymaps 'override
-    "<down>" #'company-select-next
-    "<up>" #'company-select-previous
-    "RET" #'company-complete
-    [return] #'company-complete
-    "C-w"     nil  ; don't interfere with `evil-delete-backward-word'
-    "C-n"     #'company-select-next
-    "C-p"     #'company-select-previous
-    "C-j"     #'company-select-next
-    "C-k"     #'company-select-previous
-    "C-h"     #'company-show-doc-buffer
-    "C-u"     #'company-previous-page
-    "C-d"     #'company-next-page
-    "C-s"     #'company-filter-candidates
-    "C-S-s"   (cond ((modulep! :completion helm) #'helm-company)
-                    ((modulep! :completion ivy)  #'counsel-company))
-    "C-SPC"   #'company-complete-common
-    "TAB"     #'company-complete-common-or-cycle
-    [tab]     #'company-complete-common-or-cycle
-    [backtab] #'company-select-previous))
+;; (defun custom/set-company-maps (&rest unused)
+;;   "Set maps for when you're inside company completion.
+;;     Arguments (UNUSED) are ignored."
+;;   (general-def
+;;     :states 'insert
+;;     :keymaps 'override
+;;     "<down>" #'company-select-next
+;;     "<up>" #'company-select-previous
+;;     "RET" #'company-complete
+;;     [return] #'company-complete
+;;     "C-w"     nil  ; don't interfere with `evil-delete-backward-word'
+;;     "C-n"     #'company-select-next
+;;     "C-p"     #'company-select-previous
+;;     "C-j"     #'company-select-next
+;;     "C-k"     #'company-select-previous
+;;     "C-h"     #'company-show-doc-buffer
+;;     "C-u"     #'company-previous-page
+;;     "C-d"     #'company-next-page
+;;     "C-s"     #'company-filter-candidates
+;;     "C-S-s"   (cond ((modulep! :completion helm) #'helm-company)
+;;                     ((modulep! :completion ivy)  #'counsel-company))
+;;     "C-SPC"   #'company-complete-common
+;;     "TAB"     #'company-complete-common-or-cycle
+;;     [tab]     #'company-complete-common-or-cycle
+;;     [backtab] #'company-select-previous))
 
 ;; hack to get rid of the following stupid errors:
 ;; Error during redisplay: (eval (doom-modeline-segment--workspace-name)) signaled (void-function tab-bar--current-tab)
