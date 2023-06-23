@@ -94,7 +94,9 @@
 
 (after! magit
   ;; magit open in a vertical split instead of using the current window
-  (setq magit-display-buffer-function #'magit-display-buffer-traditional))
+  (setq magit-display-buffer-function #'magit-display-buffer-traditional)
+  (push '("gitlab.dle.afrl.af.mil" "gitlab.dle.afrl.af.mil/api/v4" "gitlab.dle.afrl.af.mil" forge-gitlab-repository)
+        forge-alist))
 
 (after! avy
   ;; use `gs SPC (start typing the word you're looking at)` to jump to text in any open window
