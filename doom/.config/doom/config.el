@@ -27,7 +27,9 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 (when (string-match "darwin" (symbol-name system-type))
-  (setq doom-font (font-spec :family "Menlo" :size 16)))
+  (setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 18)))
+
+(setq doom-font-increment 1)
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -95,8 +97,9 @@
 (after! magit
   ;; magit open in a vertical split instead of using the current window
   (setq magit-display-buffer-function #'magit-display-buffer-traditional)
-  (push '("gitlab.dle.afrl.af.mil" "gitlab.dle.afrl.af.mil/api/v4" "gitlab.dle.afrl.af.mil" forge-gitlab-repository)
-        forge-alist))
+  ;; (pushnew '("gitlab.dle.afrl.af.mil" "gitlab.dle.afrl.af.mil/api/v4" "gitlab.dle.afrl.af.mil" forge-gitlab-repository) forge-alist)
+  (pushnew! forge-alist '("gitlab.dle.afrl.af.mil" "gitlab.dle.afrl.af.mil/api/v4" "gitlab.dle.afrl.af.mil" forge-gitlab-repository))
+  )
 
 (after! avy
   ;; use `gs SPC (start typing the word you're looking at)` to jump to text in any open window

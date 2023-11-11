@@ -13,7 +13,7 @@ path=(
   ${HOME}/.local/bin
 
   # NOTE: must come after kerberos and kerberized-ssh paths
-  $(pyenv root)/shims
+  # $(pyenv root)/shims
   /usr/local/{bin,sbin}
   $path
 )
@@ -115,10 +115,11 @@ plugins=(git
 	docker-compose
 	jsontools
   ripgrep
+	fzf
+	fzf-tab
 	zsh-autosuggestions
 	zsh-syntax-highlighting
-	fzf
-	fzf-tab)
+        )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -187,10 +188,16 @@ zstyle ':fzf-tab:*' fzf-pad 4
 # setup starship prompt
 eval $(starship init zsh)
 
+# setup spaceship prompt
+# source /opt/homebrew/opt/spaceship/spaceship.zsh
+
+
 # and make brew work
 if [[ -d /opt/homebrew/bin ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+eval "$(rtx activate zsh)"
 
 # nvm stuff
 export NVM_DIR="$HOME/.nvm"

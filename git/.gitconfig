@@ -75,3 +75,5 @@
 
 [includeIf "gitdir:~/proj/work/mhpcc/"]
 	path = ~/proj/work/mhpcc/.gitconfig
+[gitlab "gitlab.dle.afrl.af.mil/api/v4"]
+	user = JOHN.FARINA

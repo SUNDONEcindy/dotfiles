@@ -5,15 +5,13 @@ if [[ -d /opt/homebrew/bin ]]; then
 fi
 
 # eval "$(direnv hook zsh)"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 
 # eval "$(pyenv virtualenv-init -)"
 # pyenv-virtualenv installs a precmd hook which can be terribly slow
 # This fixes it to only run when you cd
-eval "$(pyenv virtualenv-init - | sed s/precmd/chpwd/g)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-eval "$(rbenv init - zsh)"
+# eval "$(rbenv init - zsh)"
 export BAT_THEME=Dracula

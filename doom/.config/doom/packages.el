@@ -62,4 +62,5 @@
 (package! nerd-icons)
 (package! org-modern)
 (package! yasnippet-snippets)
+(package! gitlab-ci-mode)
 ;; (package! python-cell)
