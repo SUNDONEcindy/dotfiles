@@ -98,7 +98,18 @@ shift + lcmd - k : yabai -m window --warp north
 shift + lcmd - l : yabai -m window --warp east
 
 # balance size of windows
-# shift + alt - 0 : yabai -m space --balance
+shift + lcmd - 0 : yabai -m space --balance
+
+# -- Modifying the Layout --
+
+# rotate layout clockwise
+shift + lcmd - r : yabai -m space --rotate 270
+
+# flip along y-axis
+shift + lcmd - y : yabai -m space --mirror y-axis
+
+# flip along x-axis
+shift + lcmd - x : yabai -m space --mirror x-axis
 
 # make floating window fill screen
 # shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
@@ -139,7 +150,9 @@ shift + lcmd - 9 : yabai -m window --space  9; yabai -m space --focus 9
 shift + lcmd - 0 : yabai -m window --space 10; yabai -m space --focus 10
 
 # focus monitor
-shift + lcmd - z : yabai -m display --focus recent
+lcmd - s: yabai -m display --focus west
+lcmd - g: yabai -m display --focus east
+# shift + lcmd - z : yabai -m display --focus recent
 # ctrl + alt - 3  : yabai -m display --focus 3
 
 # send window to monitor and follow focus
