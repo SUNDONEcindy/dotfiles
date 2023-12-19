@@ -63,4 +63,5 @@
 (package! org-modern)
 (package! yasnippet-snippets)
 (package! gitlab-ci-mode)
+(package! catppuccin-theme)
 ;; (package! python-cell)

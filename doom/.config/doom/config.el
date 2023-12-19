@@ -35,8 +35,10 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-moonlight)
+;; (setq doom-theme 'doom-dracula)
+;; (setq doom-theme 'catppuccin)
 (setq doom-dracula-brighter-comments t
-      doom-dracula-comment-bg t
+      doom-dracula-comment-bg nil
       doom-dracula-colorful-headers t)
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -249,7 +251,7 @@
 
 (setq
  ;; can't be wrapped in after! because this needs to happen *before* whick-key is enabled
- which-key-idle-delay 0.1
+ which-key-idle-delay 0.05
  which-key-max-display-columns 6
  which-key-max-description-length 'nil)
 
