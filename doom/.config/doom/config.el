@@ -34,12 +34,16 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-moonlight)
-;; (setq doom-theme 'doom-dracula)
-;; (setq doom-theme 'catppuccin)
 (setq doom-dracula-brighter-comments t
       doom-dracula-comment-bg nil
-      doom-dracula-colorful-headers t)
+      doom-dracula-colorful-headers t
+      doom-ir-black-brighter-comments t
+      doom-moonlight-brighter-comments t
+      doom-monokai-spectrum-brighter-comments t)
+;; (setq doom-theme 'doom-moonlight)
+(setq doom-theme 'doom-ir-black)
+;; (setq doom-theme 'doom-dracula)
+;; (setq doom-theme 'catppuccin)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
