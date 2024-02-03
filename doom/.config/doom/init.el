@@ -116,8 +116,8 @@
         +dictionary)
        ;; lsp
        (lsp
-        +peek
-        ;; +eglot
+        ;; +peek
+        +eglot
         )
 
 

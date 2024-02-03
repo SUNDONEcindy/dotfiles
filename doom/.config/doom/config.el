@@ -96,9 +96,7 @@
   ;; more colors for parens
   (setq rainbow-delimiters-max-face-count 6))
 
-;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
-;; (company-quickhelp-mode)
-(setq conda-anaconda-home (expand-file-name "~/.pyenv/versions/mambaforge"))
+;; (setq conda-anaconda-home (expand-file-name "~/.pyenv/versions/mambaforge"))
 
 (after! magit
   ;; magit open in a vertical split instead of using the current window
@@ -145,13 +143,6 @@
    ))
 
 
-;; configure eglot
-(after! eglot
-  (setq
-   eglot-ignored-server-capabilities '(:hoverProvider)
-   ))
-
-
 ;; configure lsp-mode NOTE: currently unused since we're using eglot instead
 (after! lsp-mode
   (map! :desc "lsp-ui-doc-show" :n "g h" #'lsp-ui-doc-show)
@@ -180,10 +171,11 @@
 (after! company
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
   (company-quickhelp-mode)
-  (setq company-minimum-prefix-length 2
-        company-quickhelp-delay 0.1
-        company-tooltip-idle-delay 0.1
-        company-idle-delay 0.0))
+  (setq company-minimum-prefix-length 1
+        company-quickhelp-delay 0.5
+        company-box-doc-delay 0.5
+        company-tooltip-idle-delay 0.5
+        company-idle-delay 0.5))
 
 (after! dap-mode
   (setq dap-python-debugger 'debugpy)
@@ -411,7 +403,12 @@
       (and root (cons 'transient root))))
 
   (with-eval-after-load 'project
-    (add-to-list 'project-find-functions 'projectile-project-find-function)))
+    (add-to-list 'project-find-functions 'projectile-project-find-function))
+    (add-to-list 'eglot-server-programs
+                 '(python-ts-mode . ("ruff-lsp")))
+    ;; don't fuck with company
+;; (setq eglot-stay-out-of '(company))
+  )
 
 ;; pyenv integration with projectile
 ;; ou can switch Python versions together with your current project. Drop the
