@@ -158,15 +158,20 @@
    lsp-ui-doc-enable t
    lsp-ui-doc-position "at-point"
    lsp-ui-doc-use-webkit t
-   lsp-ui-doc-show-with-cursor t
+   lsp-ui-doc-show-with-cursor nil
    lsp-ui-doc-max-height 40
    lsp-ui-doc-header t
    lsp-ui-doc-delay 0
+   lsp-ui-imenu-auto-refresh t
    read-process-output-max (* 1024 1024))
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venv\\'"))
 
 ;; add company-files to backends for some modes
-(set-company-backend! '(prog-mode text-mode org-mode lisp-mode fundamental-mode) 'company-files)
+;; (set-company-backend! '(prog-mode text-mode org-mode lisp-mode fundamental-mode) 'company-yasnippet 'company-files)
+;; (after! prog-mode
+;;   (setq company-backends
+;;         '( (:separate company-yasnippet company-files company-capf company-dabbrev company-ispell)))
+;;   )
 
 (after! company
   ;; quickhelp popups (ony in GUI emacs) to the right of completion candidates
@@ -176,6 +181,14 @@
         company-box-doc-delay 0.5
         company-tooltip-idle-delay 0.5
         company-idle-delay 0.5))
+
+;; (after! highlight-indent-guides-mode
+
+;;   (setq highlight-indent-guides-auto-odd-face-perc 15)
+;;   (setq highlight-indent-guides-auto-even-face-perc 15)
+;;   (setq highlight-indent-guides-auto-character-face-perc 20)
+;;   )
+
 
 (after! dap-mode
   (setq dap-python-debugger 'debugpy)
