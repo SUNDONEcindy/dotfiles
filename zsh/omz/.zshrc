@@ -2,6 +2,8 @@
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
+typeset +r TMOUT=0
+
 # Set the list of directories that Zsh searches for programs.
 path=(
   # NOTE: ensure MHPCC ssh and kerberos take precedent
@@ -19,7 +21,7 @@ path=(
 )
 
 # preprend some paths, if they exist
-for d in ${HOME}/.emacs.d/bin \
+for d in ${HOME}/.config/emacs/bin \
   ${HOME}/.fzf/bin \
   ${HOME}/.poetry/bin \
   ${HOME}/local/miniconda3/bin \
@@ -197,7 +199,7 @@ if [[ -d /opt/homebrew/bin ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-eval "$(rtx activate zsh)"
+eval "$(mise activate zsh)"
 
 # nvm stuff
 export NVM_DIR="$HOME/.nvm"
@@ -223,3 +225,17 @@ export NVM_DIR="$HOME/.nvm"
 # fi
 # <<< conda initialize <<<
 
+
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
+
+if command -v zoxide > /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+# Source the Lazyman shell initialization for aliases and nvims selector
+# shellcheck source=.config/nvim-Lazyman/.lazymanrc
+[ -f ~/.config/nvim-Lazyman/.lazymanrc ] && source ~/.config/nvim-Lazyman/.lazymanrc
+# Source the Lazyman .nvimsbind for nvims key binding
+# shellcheck source=.config/nvim-Lazyman/.nvimsbind
+[ -f ~/.config/nvim-Lazyman/.nvimsbind ] && source ~/.config/nvim-Lazyman/.nvimsbind
