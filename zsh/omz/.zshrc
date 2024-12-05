@@ -188,7 +188,7 @@ zstyle ':fzf-tab:*' fzf-pad 4
 #
 
 # setup starship prompt
-eval $(starship init zsh)
+eval "$(starship init zsh)"
 
 # setup spaceship prompt
 # source /opt/homebrew/opt/spaceship/spaceship.zsh
