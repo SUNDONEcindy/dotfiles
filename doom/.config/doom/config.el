@@ -40,8 +40,8 @@
       doom-ir-black-brighter-comments t
       doom-moonlight-brighter-comments t
       doom-monokai-spectrum-brighter-comments t)
-;; (setq doom-theme 'doom-moonlight)
-(setq doom-theme 'doom-ir-black)
+(setq doom-theme 'doom-moonlight)
+;; (setq doom-theme 'doom-ir-black)
 ;; (setq doom-theme 'doom-dracula)
 ;; (setq doom-theme 'catppuccin)
 
@@ -52,7 +52,6 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
-
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -92,6 +91,13 @@
 (add-hook 'prog-mode-hook 'rainbow-mode)
 (add-hook 'prog-mode-hook 'highlight-quoted-mode)
 
+;; (after! rss
+;;   (require 'elfeed-goodies)
+;;   (elfeed-goodies/setup)
+;;   (setq elfeed-feeds (quote
+;;                       (("https://gitlab.dle.afrl.af.mil/pecoc.atom?feed_token=glft-7f3b083fbe7f97c57da65a7b7ae64e8818c0869407ff72fae355cd5652a2a127-334" pecoc
+;;                         )))))
+
 (after! rainbow-delimiters-mode
   ;; more colors for parens
   (setq rainbow-delimiters-max-face-count 6))
@@ -101,8 +107,8 @@
 (after! magit
   ;; magit open in a vertical split instead of using the current window
   (setq magit-display-buffer-function #'magit-display-buffer-traditional)
-  ;; (pushnew '("gitlab.dle.afrl.af.mil" "gitlab.dle.afrl.af.mil/api/v4" "gitlab.dle.afrl.af.mil" forge-gitlab-repository) forge-alist)
   (pushnew! forge-alist '("gitlab.dle.afrl.af.mil" "gitlab.dle.afrl.af.mil/api/v4" "gitlab.dle.afrl.af.mil" forge-gitlab-repository))
+  (pushnew! forge-alist '("gitlab-ultimate.dle.afrl.af.mil" "gitlab-ultimate.dle.afrl.af.mil/api/v4" "gitlab-ultimate.dle.afrl.af.mil" forge-gitlab-repository))
   )
 
 (after! avy
@@ -241,10 +247,10 @@
 
 ;; Default headers for jupyter-julia src blocks in org
 (setq org-babel-default-header-args:jupyter-python '((:session . "py")
-                                                    (:kernel . "python3")
-                                                    (:async . "yes")
-                                                    (:exports . "both")
-                                                    (:results . "output")))
+                                                     (:kernel . "python3")
+                                                     (:async . "yes")
+                                                     (:exports . "both")
+                                                     (:results . "output")))
 
 ;; Default headers for jupyter-python src blocks in org
 (setq org-babel-default-header-args:jupyter-julia '((:session . "jl")
@@ -391,7 +397,7 @@
 ;; Error during redisplay: (eval (doom-modeline-segment--workspace-name)) signaled (void-function tab-bar--current-tab)
 (setq doom-modeline-workspace-name nil)
 (setq
-;; more characters for the branch name (default is 12)
+ ;; more characters for the branch name (default is 12)
  doom-modeline-vcs-max-length 25
  ;; don't truncate file name in the modeline
  ;; doom-modeline-buffer-file-name-style 'truncate-nil
@@ -417,10 +423,10 @@
 
   (with-eval-after-load 'project
     (add-to-list 'project-find-functions 'projectile-project-find-function))
-    (add-to-list 'eglot-server-programs
-                 '(python-ts-mode . ("ruff-lsp")))
-    ;; don't fuck with company
-;; (setq eglot-stay-out-of '(company))
+  (add-to-list 'eglot-server-programs
+               '(python-ts-mode . ("ruff-lsp")))
+  ;; don't fuck with company
+  ;; (setq eglot-stay-out-of '(company))
   )
 
 ;; pyenv integration with projectile
