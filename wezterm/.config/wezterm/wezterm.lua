@@ -6,36 +6,36 @@ local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smar
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- Function to check if the current pane is running Neovim
-local function is_vim(pane)
-	return pane:get_user_vars().NVIM == "true"
-end
-
--- Define direction keys for navigation
-local direction_keys = {
-	h = "Left",
-	j = "Down",
-	k = "Up",
-	l = "Right",
-}
-
--- Function to handle split navigation
-local function split_nav(key)
-	return {
-		key = key,
-		mods = "CTRL",
-		action = wezterm.action_callback(function(win, pane)
-			if is_vim(pane) then
-				-- Pass the keys through to vim/nvim
-				win:perform_action({
-					SendKey = { key = key, mods = "CTRL" },
-				}, pane)
-			else
-				win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
-			end
-		end),
-	}
-end
+-- -- Function to check if the current pane is running Neovim
+-- local function is_vim(pane)
+-- 	return pane:get_user_vars().NVIM == "true"
+-- end
+--
+-- -- Define direction keys for navigation
+-- local direction_keys = {
+-- 	h = "Left",
+-- 	j = "Down",
+-- 	k = "Up",
+-- 	l = "Right",
+-- }
+--
+-- -- Function to handle split navigation
+-- local function split_nav(key)
+-- 	return {
+-- 		key = key,
+-- 		mods = "CTRL",
+-- 		action = wezterm.action_callback(function(win, pane)
+-- 			if is_vim(pane) then
+-- 				-- Pass the keys through to vim/nvim
+-- 				win:perform_action({
+-- 					SendKey = { key = key, mods = "CTRL" },
+-- 				}, pane)
+-- 			else
+-- 				win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+-- 			end
+-- 		end),
+-- 	}
+-- end
 
 -- This is where you actually apply your config choices
 
@@ -65,11 +65,11 @@ config.leader = {
 }
 
 config.keys = {
-	-- Move between split panes using Leader + hjkl
-	split_nav("h"),
-	split_nav("j"),
-	split_nav("k"),
-	split_nav("l"),
+	-- -- Move between split panes using Leader + hjkl
+	-- split_nav("h"),
+	-- split_nav("j"),
+	-- split_nav("k"),
+	-- split_nav("l"),
 	{
 		key = "v",
 		mods = "LEADER",
@@ -91,8 +91,8 @@ smart_splits.apply_to_config(config, {
 	direction_keys = { "h", "j", "k", "l" },
 	-- modifier keys to combine with direction_keys
 	modifiers = {
-		-- move = 'CTRL', -- modifier to use for pane movement, e.g. CTRL+h to move left
-		move = "LEADER", -- modifier to use for pane movement, e.g. CTRL+h to move left
+		move = "CTRL", -- modifier to use for pane movement, e.g. CTRL+h to move left
+		-- move = "LEADER", -- modifier to use for pane movement, e.g. CTRL+h to move left
 		resize = "META", -- modifier to use for pane resize, e.g. META+h to resize to the left
 	},
 })
