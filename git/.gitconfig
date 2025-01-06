@@ -77,3 +77,5 @@
 	path = ~/proj/work/mhpcc/.gitconfig
 [gitlab "gitlab.dle.afrl.af.mil/api/v4"]
 	user = JOHN.FARINA
+[gitlab "gitlab-ultimate.dle.afrl.af.mil/api/v4"]
+	user = JOHN_FARINA
